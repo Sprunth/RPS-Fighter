@@ -16,12 +16,14 @@ namespace RPS_Fighter
         RenderWindow window;
         public GameMaster GM { get; set; }
         public Font font { get; set; }
+        public Vector2u WindowSize { get; set; }
 
         public RPSGame()
         {
+            WindowSize = new Vector2u(1200, 900);
             ContextSettings cs = new ContextSettings();
             cs.AntialiasingLevel = 8;
-            window = new RenderWindow(new VideoMode(1200,600),"RPS Fighter", Styles.Titlebar | Styles.Close, cs);
+            window = new RenderWindow(new VideoMode(WindowSize.X, WindowSize.Y),"RPS Fighter", Styles.Titlebar | Styles.Close, cs);
             window.Closed += window_Closed;
             window.SetFramerateLimit(60);
         }

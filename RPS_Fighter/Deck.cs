@@ -106,5 +106,10 @@ namespace RPS_Fighter
                 Console.WriteLine(c.ToString());
             }
         }
+
+        public Card GetCardOfIndex(int i)
+        {
+            return cards[i];
+        }
     }
 }
