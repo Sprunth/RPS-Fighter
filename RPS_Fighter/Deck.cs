@@ -111,5 +111,10 @@ namespace RPS_Fighter
         {
             return cards[i];
         }
+
+        public Card GetLastCard()
+        {
+            return cards.Last();
+        }
     }
 }

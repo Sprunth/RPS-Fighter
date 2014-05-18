@@ -41,7 +41,7 @@ namespace RPS_Fighter
             CurrentGameState = GameState.Player1Turn;
 
             //test
-            cs = new CardSelect(Player1.Hand);
+            cs = new CardSelect(Player1);
             // end test
 
             Program.ActiveGame.RPSWindow.MouseButtonReleased += RPSWindow_MouseButtonReleased;
@@ -68,7 +68,7 @@ namespace RPS_Fighter
                     Player1Turn(Program.ActiveGame.RPSWindow);
                     break;
                 case GameState.Player2Turn:
-                    cs = new CardSelect(Player2.Hand);
+                    cs = new CardSelect(Player2);
                     Player2Turn(Program.ActiveGame.RPSWindow);
                     break;
                 case GameState.Battle:
