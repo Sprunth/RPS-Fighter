@@ -197,6 +197,7 @@ namespace RPS_Fighter
                     }
                 case GameState.NewTurn:
                     {
+                        nt.Update();
                         if (mouseClicked)
                         {
                             mouseClicked = false;
