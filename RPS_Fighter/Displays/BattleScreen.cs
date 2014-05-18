@@ -16,6 +16,7 @@ namespace RPS_Fighter.Displays
 
         CardDisplay p1Card, p2Card;
         float p1Goal, p2Goal;
+        Text p1, p2;
 
         public BattleScreen()
         {
@@ -30,7 +31,10 @@ namespace RPS_Fighter.Displays
 
             AnimationDone = false;
 
-            
+            p1 = new Text("Player 1", Program.ActiveGame.font, 42);
+            p2 = new Text("Player 2", Program.ActiveGame.font, 42);
+            p1.Position = new Vector2f(16, 8);
+            p2.Position = new Vector2f(Program.ActiveGame.WindowSize.X - 160, Program.ActiveGame.WindowSize.Y - 48);
         }
 
         public void Initialize()
@@ -67,6 +71,8 @@ namespace RPS_Fighter.Displays
             window.Draw(versus);
             window.Draw(p1Card);
             window.Draw(p2Card);
+            window.Draw(p1);
+            window.Draw(p2);
         }
 
     }
