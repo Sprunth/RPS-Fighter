@@ -29,5 +29,10 @@ namespace RPS_Fighter
             Program.ActiveGame.GM.SetPlayingCard(c, this);
             Discard.AddCard(c);
         }
+
+        public void PrintDeck()
+        {
+            CDeck.PrintDeck();
+        }
     }
 }

@@ -15,12 +15,9 @@ namespace RPS_Fighter
 
         Card p1Card, p2Card;
 
-        public Random Rand { get; set; }
 
         public GameMaster()
         {
-            Rand = new Random();
-
             Deck p1Deck = new Deck();
             Deck p2Deck = new Deck();
             p1Deck.StandardDeckPopulate();
@@ -28,6 +25,9 @@ namespace RPS_Fighter
 
             Player1 = new Character(p1Deck);
             Player2 = new Character(p2Deck);
+
+            Player1.PrintDeck();
+            Player2.PrintDeck();
         }
 
         public void SetPlayingCard(Card c, Character character)

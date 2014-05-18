@@ -45,21 +45,21 @@ namespace RPS_Fighter
 
             for(int i=0;i<5;i++)
             {
-                int index = GameMaster.ActiveGM.Rand.Next(attack.Count);
+                int index = Program.Rand.Next(attack.Count);
                 Card c = attack[index];
                 cards.Add(c);
                 attack.RemoveAt(index);
             }
             for (int i = 0; i < 3; i++)
             {
-                int index = GameMaster.ActiveGM.Rand.Next(grapple.Count);
+                int index = Program.Rand.Next(grapple.Count);
                 Card c = grapple[index];
                 cards.Add(c);
                 grapple.RemoveAt(index);
             }
             for (int i = 0; i < 3; i++)
             {
-                int index = GameMaster.ActiveGM.Rand.Next(block.Count);
+                int index = Program.Rand.Next(block.Count);
                 Card c = block[index];
                 cards.Add(c);
                 block.RemoveAt(index);
@@ -90,11 +90,20 @@ namespace RPS_Fighter
             for (int i = cards.Count - 1; i >= 0; i--)
             {
                 Card tmp = cards[i];
-                int randomIndex = GameMaster.ActiveGM.Rand.Next(i + 1);
+                int randomIndex = Program.Rand.Next(i + 1);
 
                 //Swap elements
                 cards[i] = cards[randomIndex];
                 cards[randomIndex] = tmp;
+            }
+        }
+
+        public void PrintDeck()
+        {
+            Console.WriteLine("Cards in deck: ");
+            foreach (Card c in cards)
+            {
+                Console.WriteLine(c.ToString());
             }
         }
     }

@@ -21,6 +21,11 @@ namespace RPS_Fighter
         {
 
         }
+
+        public override string ToString()
+        {
+            return "Card with STR: " + strength + " EnergyCost: " + energyCost + " Type: " + cardType;
+        }
     }
 
     public enum CardType { Attack, Grapple, Block }

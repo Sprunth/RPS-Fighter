@@ -27,6 +27,8 @@ namespace RPS_Fighter
         public void Initialize()
         {
             GM = new GameMaster();
+
+            
         }
 
         public void Run()
