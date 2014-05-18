@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using RPS_Fighter.Displays;
 using SFML.Graphics;
+using SFML.Window;
 
 namespace RPS_Fighter
 {
@@ -70,6 +71,11 @@ namespace RPS_Fighter
         public Character GetOtherCharacter(Character c)
         {
             return (c == Player1) ? Player2 : Player1;
+        }
+
+        public void Player1Turn()
+        {
+            if(Mou)
         }
         /// <summary>
         /// Takes two cards and checks their types and values against each other. If one is superior to the other,
