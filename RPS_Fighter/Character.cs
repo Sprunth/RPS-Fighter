@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,6 +34,7 @@ namespace RPS_Fighter
 
         public void DrawCard()
         {
+            //Debug.WriteLine("CDeck: " + CDeck.Count + " Hand: " + HandCount + " Discard: " + Discard.Count);
             Card c = CDeck.Draw();
             Hand.AddCard(c); // TODO: Check that there aren't more than 6 cards in hand
         }

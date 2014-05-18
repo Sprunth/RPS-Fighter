@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -56,21 +57,21 @@ namespace RPS_Fighter
             }
             
 
-            for(int i=0;i<5;i++)
+            for(int i=0;i<5*10;i++)
             {
                 int index = Program.Rand.Next(attack.Count);
                 Card c = attack[index];
                 cards.Add(c);
                 attack.RemoveAt(index);
             }
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 3*10; i++)
             {
                 int index = Program.Rand.Next(grapple.Count);
                 Card c = grapple[index];
                 cards.Add(c);
                 grapple.RemoveAt(index);
             }
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 3*10; i++)
             {
                 int index = Program.Rand.Next(block.Count);
                 Card c = block[index];
@@ -88,6 +89,7 @@ namespace RPS_Fighter
 
         public Card Draw()
         {
+            //Debug.WriteLine("Cards Size = " + cards.Count);
             Card c = cards.First();
             cards.Remove(c);
             return c;
