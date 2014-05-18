@@ -90,9 +90,33 @@ namespace RPS_Fighter
                     }
                     break;
                 case GameState.Combo:
+                    CurrentGameState = GameState.Reset;
                     break;
                 case GameState.Reset:
+                    int resetVal = Reset();
+                    switch(resetVal)
+                    {
+                        case 0:
+                            Console.WriteLine("Player One is victorious! *fanfare*");
+                            Player1.HP = 15;
+                            Player2.HP = 15;
+                            break;
+                        case 1:
+                            Console.WriteLine("Player Two has crushed the opposition! *hooray*");
+                            Player2.HP = 15;
+                            Player1.HP = 15;
+                            break;
+                        case 2:
+                            Console.WriteLine("In war, there are no winners. *solemn music*");
+                            Player1.HP = 15;
+                            Player2.HP = 15;
+                            break;
+                        case 3:
+                            Console.WriteLine("The battle continues! *Intense music*");
+                            break;
+                    }
                     CurrentGameState = GameState.Player1Turn;
+                    cs = new CardSelect(Player1);
                     break;
             }
         }
@@ -177,7 +201,7 @@ namespace RPS_Fighter
                 p1Card.ApplyEffect(Player2);
                 return 0;
             }
-            else if((p2Card.TypeOfCard == p1Card.TypeOfCard) &&(p1Card.TypeOfCard == CardType.Attack))
+            else if((p2Card.TypeOfCard == p1Card.TypeOfCard) && (p1Card.TypeOfCard == CardType.Attack))
             {
                 if(p1Card.Strength>p2Card.Strength)
                 {
