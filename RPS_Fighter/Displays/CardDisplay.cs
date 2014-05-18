@@ -37,7 +37,7 @@ namespace RPS_Fighter.Displays
             energyCost = new Text(c.EnergyCost.ToString(), font, 16);
             cardTypeText = new Text(c.TypeOfCard.ToString(), font, 16);
 
-            strength.Color = new Color(32, 32, 32);
+            strength.Color = new Color(200, 200, 200);
             energyCost.Color = strength.Color;
             cardTypeText.Color = strength.Color;
 
