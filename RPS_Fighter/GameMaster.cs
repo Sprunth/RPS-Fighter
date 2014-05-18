@@ -78,9 +78,12 @@ namespace RPS_Fighter
         //    int i = 0;
         //    while(true)
         //    {
-        //        if(cs.cards[0].IsWithin(Mouse.GetPosition()))
+        //        int x = Mouse.GetPosition().X;
+        //        int y = Mouse.GetPosition().Y;
+        //        Vector2f temp = new Vector2f((float)(x), (float)(y));
+        //        if(cs.cards[i].IsWithin(temp) && Mouse.IsButtonPressed(Mouse.Button.Left))
         //        {
-
+        //            cs.cards[i].
         //        }
         //    }
         //}
