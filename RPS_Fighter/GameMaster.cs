@@ -61,7 +61,7 @@ namespace RPS_Fighter
         /// <summary>
         /// Takes two cards and checks their types and values against each other. If one is superior to the other,
         /// then apply the superior card's effect to the inferior card's player, and declare the superior card's player
-        /// as the victor. A zero is player 1's victory, and a 1 is player 2's victory.
+        /// as the victor. A zero is player 1's victory, and a 1 is player 2's victory, and a 2 means nobody wins.
         /// </summary>
         /// <returns></returns>
         public int Battle()
@@ -93,9 +93,45 @@ namespace RPS_Fighter
             }
             else if((p2Card.TypeOfCard == p1Card.TypeOfCard) &&(p1Card.TypeOfCard == CardType.Attack))
             {
-                if(p)
-            }
+                if(p1Card.Strength>p2Card.Strength)
+                {
+                    p1Card.ApplyEffect(Player2);
+                    return 0;
+                }
+                else if(p2Card.Strength>p1Card.Strength)
+                {
+                    p2Card.ApplyEffect(Player1);
+                    return 1;
+                }
+                else
+                {
+                    p1Card.ApplyEffect(Player2);
+                    p2Card.ApplyEffect(Player1);
+                    return 2;
 
+                }
+            }
+            else if ((p2Card.TypeOfCard == p1Card.TypeOfCard) && (p1Card.TypeOfCard == CardType.Grapple))
+            {
+                if (p1Card.Strength > p2Card.Strength)
+                {
+                    p1Card.ApplyEffect(Player2);
+                    return 0;
+                }
+                else if (p2Card.Strength > p1Card.Strength)
+                {
+                    p2Card.ApplyEffect(Player1);
+                    return 1;
+                }
+                else
+                {
+                    p1Card.ApplyEffect(Player2);
+                    p2Card.ApplyEffect(Player1);
+                    return 2;
+
+                }
+            }
+            return 2;
         }
     }
 
