@@ -146,6 +146,24 @@ namespace RPS_Fighter
             }
             return 2;
         }
+        /// <summary>
+        /// Resets player energies and checks health of players. If either is below zero, the other is the winner.
+        /// If both of the players are under zero, then the match ends with a tie.
+        /// 0 means player 1 wins, 1 means player 2 wins, 2 means a tie, and 3 means business as usual.
+        /// </summary>
+        /// <returns></returns>
+        public int Reset()
+        {
+            Player1.CurEnergy = Player1.MaxEnergy;
+            Player2.CurEnergy = Player2.MaxEnergy;
+            if ((Player2.HP <= 0) && (Player1.HP <= 0))
+                return 2;
+            else if (Player2.HP <= 0)
+                return 0;
+            else if (Player1.HP <= 0)
+                return 1;
+            return 3;
+        }
     }
 
     public enum GameState { Player1Turn, Player2Turn, Battle, Combo, Reset }
