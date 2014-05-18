@@ -44,10 +44,13 @@ namespace RPS_Fighter
 
             CurrentGameState = GameState.Player1Turn;
 
+            Program.ActiveGame.RPSWindow.MouseButtonReleased += RPSWindow_MouseButtonReleased;
+        }
+
+        public void Initialize()
+        {
             cs = new CardSelect(Player1);
             bs = new BattleScreen();
-
-            Program.ActiveGame.RPSWindow.MouseButtonReleased += RPSWindow_MouseButtonReleased;
         }
 
         void RPSWindow_MouseButtonReleased(object sender, MouseButtonEventArgs e)
@@ -69,10 +72,12 @@ namespace RPS_Fighter
             {
                 case GameState.Player1Turn:
                     Player1Turn(Program.ActiveGame.RPSWindow);
+                    cs.Update();
                     break;
                 case GameState.Player2Turn:
                     cs = new CardSelect(Player2);
                     Player2Turn(Program.ActiveGame.RPSWindow);
+                    cs.Update();
                     break;
                 case GameState.Battle:
                     bs.Update();
