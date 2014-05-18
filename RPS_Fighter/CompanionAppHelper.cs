@@ -13,13 +13,21 @@ namespace RPS_Fighter
     {
         IPEndPoint dest;
         Socket socket;
+        UdpClient client;
         Stopwatch stopWatch;
 
         public CompanionAppHelper()
         {
-            dest = new IPEndPoint(IPAddress.Parse("128.120.113.190"), 9050);
+            
+            dest = new IPEndPoint(IPAddress.Parse("128.120.113.190"), 21022);
             socket = new Socket(AddressFamily.InterNetwork,
                                        SocketType.Dgram, ProtocolType.Udp);
+
+                client = new UdpClient();
+                //dest = new IPEndPoint(IPAddress.Broadcast, 21022);
+                
+
+
             stopWatch = new Stopwatch();
             stopWatch.Start();
         }
@@ -28,9 +36,15 @@ namespace RPS_Fighter
         {
             if (stopWatch.ElapsedMilliseconds > 1000)
             {
+                
                 string welcome = "Hello, are you there?";
                 var data = Encoding.ASCII.GetBytes(welcome);
                 socket.SendTo(data, data.Length, SocketFlags.None, dest);
+                /*
+                byte[] bytes = Encoding.ASCII.GetBytes("Foo");
+                client.Send(bytes, bytes.Length, dest);
+                //client.Close();
+                 * */
                 Debug.WriteLine("Sending packet");
 
                 stopWatch.Restart();
