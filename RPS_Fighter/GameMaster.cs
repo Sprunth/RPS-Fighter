@@ -43,10 +43,13 @@ namespace RPS_Fighter
 
             CurrentGameState = GameState.Player1Turn;
 
+            Program.ActiveGame.RPSWindow.MouseButtonReleased += RPSWindow_MouseButtonReleased;
+        }
+
+        public void Initialize()
+        {
             cs = new CardSelect(Player1);
             bs = new BattleScreen();
-
-            Program.ActiveGame.RPSWindow.MouseButtonReleased += RPSWindow_MouseButtonReleased;
         }
 
         void RPSWindow_MouseButtonReleased(object sender, MouseButtonEventArgs e)

@@ -40,6 +40,7 @@ namespace RPS_Fighter
         {
             font = new Font("Fonts/cambria.ttc");
             GM = new GameMaster();
+            GM.Initialize();
             cursor = new Cursor();   
         }
 

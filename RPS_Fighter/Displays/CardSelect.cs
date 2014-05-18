@@ -98,6 +98,7 @@ namespace RPS_Fighter.Displays
 
             window.Draw(deckLabel);
             window.Draw(discardLabel);
+            window.Draw(gameStateStatus);
         }
     }
 }
