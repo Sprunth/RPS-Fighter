@@ -42,6 +42,12 @@ namespace RPS_Fighter
             Character enemy = GameMaster.ActiveGM.GetOtherCharacter(this);
             Program.ActiveGame.GM.SetPlayingCard(c, this);
             Discard.AddCard(c);
+            if(CDeck.Count == 0)
+            {
+                CDeck = Discard;
+                Discard = new Deck();
+                CDeck.Shuffle();
+            }
             DrawCard();
         }
 
