@@ -60,9 +60,30 @@ namespace RPS_Fighter.Displays
             {
                 case GameState.Player1Turn: { gameStateString = "Player 1's Turn"; break; }
                 case GameState.Player2Turn: { gameStateString = "Player 2's Turn"; break; }
-                case GameState.Combo:
-                    { break; }
+                case GameState.Combo: 
+                    {
+                        switch(GameMaster.ActiveGM.BattleResult)
+                        {
+                            case 0: // player 1 win
+                                {
+                                    gameStateString = "Player 1's combo phase";
+                                    break;
+                                }
+                            case 1: // player 2 win
+                                {
+                                    gameStateString = "Player 2's combo phase";
+                                    break;
+                                }
+                            case 2: // tie...should not reach here
+                                {
+                                    throw new Exception("Why is a tie entering combo?");
+                                }
+                        }
+                        break;
+                    }
             }
+            gameStateStatus = new Text(gameStateString, Program.ActiveGame.font, 34);
+            gameStateStatus.Position = new Vector2f(60, 20);
         }
 
         public void Draw(RenderWindow window)
