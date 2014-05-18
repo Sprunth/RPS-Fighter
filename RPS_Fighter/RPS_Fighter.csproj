@@ -86,6 +86,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="cambria.ttc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SegoeWP.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
