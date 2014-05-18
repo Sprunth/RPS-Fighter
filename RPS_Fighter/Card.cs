@@ -8,13 +8,18 @@ namespace RPS_Fighter
 {
     public class Card
     {
+        static uint IDGen = 0;
+        static uint GetUniqueID() { return IDGen++; }
+
+        public uint uniqueID;
+
         public int Strength;
         public int EnergyCost;
         public CardType TypeOfCard;
 
         public Card()
         {
-
+            uniqueID = GetUniqueID();
         }
 
         public virtual void ApplyEffect(Character character)

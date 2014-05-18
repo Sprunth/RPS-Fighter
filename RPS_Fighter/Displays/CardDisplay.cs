@@ -13,8 +13,7 @@ namespace RPS_Fighter.Displays
 {
     class CardDisplay : Drawable
     {
-        RectangleShape rect;
-        Sprite spr;
+        Sprite spr, centerImg;
         Text strength;
         Text energyCost;
         Text cardTypeText;
@@ -37,35 +36,47 @@ namespace RPS_Fighter.Displays
             energyCost.Color = strength.Color;
             cardTypeText.Color = strength.Color;
 
-            string cardImagePath = "";
+            string cardImagePath = "", cardCenterImagePath = "";
             switch(c.TypeOfCard)
             {
-                case CardType.Attack: { cardImagePath = "Images/AttackFrontTemplate.png"; break; }
-                case CardType.Grapple: { cardImagePath = "Images/GrappleFrontTemplate.png"; break; }
-                case CardType.Block: { cardImagePath = "Images/BlockFrontTemplate.png"; break; }
+                case CardType.Attack:
+                    {
+                        cardImagePath = "Images/AttackFrontTemplate.png";
+                        cardCenterImagePath = "Images/attack.png";
+                        break;
+                    }
+                case CardType.Grapple:
+                    {
+                        cardImagePath = "Images/GrappleFrontTemplate.png";
+                        cardCenterImagePath = "Images/grapple.png";
+                        break;
+                    }
+                case CardType.Block:
+                    {
+                        cardImagePath = "Images/BlockFrontTemplate.png";
+                        cardCenterImagePath = "Images/block.png";
+                        break;
+                    }
                 default: throw new Exception("Unknown cardtype: " + c.TypeOfCard);
             }
             spr = new Sprite(new Texture(cardImagePath));
+            centerImg = new Sprite(new Texture(cardCenterImagePath));
         }
 
         public void SetPosition(Vector2f pos)
         {
-            rect = new RectangleShape(new Vector2f(128, 160));
-            rect.Position = pos;
-            rect.FillColor = new Color(110,100,90);
-            rect.OutlineColor = new Color(24, 24, 24);
-            rect.OutlineThickness = 2;
             spr.Position = pos;
-            strength.Position       = rect.Position + new Vector2f(16, 134);
-            energyCost.Position     = rect.Position + new Vector2f(96, 134);
-            cardTypeText.Position   = rect.Position + new Vector2f(12, 6);
+            centerImg.Position = pos;
+            strength.Position       = spr.Position + new Vector2f(16, 134);
+            energyCost.Position     = spr.Position + new Vector2f(96, 134);
+            cardTypeText.Position   = spr.Position + new Vector2f(12, 6);
         }
 
         public void Draw(RenderTarget target, RenderStates states)
         {
             states.Transform = Transform.Identity;
             target.Draw(spr);
-            //target.Draw(rect);
+            target.Draw(centerImg);
             target.Draw(strength);
             target.Draw(energyCost);
             target.Draw(cardTypeText);
@@ -73,10 +84,10 @@ namespace RPS_Fighter.Displays
 
         public bool IsWithin(Vector2f vector)
         {
-            if((vector.X >= rect.GetGlobalBounds().Left) && 
-                (vector.X <= rect.GetGlobalBounds().Left + rect.GetGlobalBounds().Width) &&
-                (vector.Y >= rect.GetGlobalBounds().Top) &&
-                (vector.Y <= rect.GetGlobalBounds().Top + rect.GetGlobalBounds().Height))
+            if ((vector.X >= spr.GetGlobalBounds().Left) &&
+                (vector.X <= spr.GetGlobalBounds().Left + spr.GetGlobalBounds().Width) &&
+                (vector.Y >= spr.GetGlobalBounds().Top) &&
+                (vector.Y <= spr.GetGlobalBounds().Top + spr.GetGlobalBounds().Height))
             {
                 return true;
             }
