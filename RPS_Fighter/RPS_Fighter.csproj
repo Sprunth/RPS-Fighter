@@ -76,6 +76,7 @@
     <Compile Include="AttackCard.cs" />
     <Compile Include="BlockCard.cs" />
     <Compile Include="Card.cs" />
+    <Compile Include="Displays\BattleScreen.cs" />
     <Compile Include="Displays\CardDisplay.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="Deck.cs" />
@@ -112,6 +113,9 @@
     <Content Include="Images\AttackFrontTemplate.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\BattleScreen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\block.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -131,6 +135,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\tapTick.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\versus.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="libsndfile-1.dll">
