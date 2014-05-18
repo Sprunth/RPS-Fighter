@@ -29,7 +29,7 @@ namespace RPS_Fighter
         public void Initialize()
         {
             GM = new GameMaster();
-            font = new Font("cambria.ttc");
+            font = new Font("Fonts/cambria.ttc");
             
         }
 

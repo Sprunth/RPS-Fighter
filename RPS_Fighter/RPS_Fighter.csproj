@@ -86,11 +86,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="cambria.ttc">
+    <None Include="Fonts\cambria.ttc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SegoeWP.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Include="Fonts\SegoeWP.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
