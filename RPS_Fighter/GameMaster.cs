@@ -61,7 +61,7 @@ namespace RPS_Fighter
         /// <summary>
         /// Takes two cards and checks their types and values against each other. If one is superior to the other,
         /// then apply the superior card's effect to the inferior card's player, and declare the superior card's player
-        /// as the victor.
+        /// as the victor. A zero is player 1's victory, and a 1 is player 2's victory.
         /// </summary>
         /// <returns></returns>
         public int Battle()
@@ -69,6 +69,16 @@ namespace RPS_Fighter
             //check card strengths
             if ((p1Card.cardType == CardType.Attack) && (p2Card.cardType == CardType.Block))
                 return 1; //
+            else if ((p1Card.cardType == CardType.Block) && (p2Card.cardType == CardType.Grapple))
+            {
+                p2Card.ApplyEffect(Player1);
+                return 1;
+            }
+            else if((p1Card.cardType == CardType.Grapple) && (p2Card.cardType == CardType.Attack))
+            {
+                p2Card.ApplyEffect(Player1);
+                return 1;
+            }
         }
     }
 
