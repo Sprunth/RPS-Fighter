@@ -33,7 +33,6 @@ namespace RPS_Fighter
             font = new Font("Fonts/cambria.ttc");
             GM = new GameMaster();
             
-            
         }
 
         public void Run()
@@ -58,9 +57,6 @@ namespace RPS_Fighter
         {
             window.Clear(new Color(20,30,40));
             //draw
-            Text t = new Text("Hello World", font, 24);
-            t.Position = new Vector2f(20, 30);
-            window.Draw(t);
 
             GM.Draw(window);
 
