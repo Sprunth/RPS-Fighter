@@ -74,10 +74,22 @@ namespace RPS_Fighter
                 p2Card.ApplyEffect(Player1);
                 return 1;
             }
-            else if((p1Card.cardType == CardType.Grapple) && (p2Card.cardType == CardType.Attack))
+            else if ((p1Card.cardType == CardType.Grapple) && (p2Card.cardType == CardType.Attack))
             {
                 p2Card.ApplyEffect(Player1);
                 return 1;
+            }
+            else if ((p2Card.cardType == CardType.Attack) && (p1Card.cardType == CardType.Block))
+                return 0;
+            else if((p2Card.cardType == CardType.Block) && (p1Card.cardType == CardType.Grapple))
+            {
+                p1Card.ApplyEffect(Player2);
+                return 0;
+            }
+            else if((p2Card.cardType == CardType.Grapple) && (p1Card.cardType == CardType.Attack))
+            {
+                p1Card.ApplyEffect(Player2);
+                return 0;
             }
         }
     }
