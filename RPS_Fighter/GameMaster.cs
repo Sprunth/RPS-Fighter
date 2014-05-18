@@ -73,6 +73,7 @@ namespace RPS_Fighter
                     Player2Turn(Program.ActiveGame.RPSWindow);
                     break;
                 case GameState.Battle:
+                    bs.Update();
                     if (bs.AnimationDone)
                     {
                         int BattleResult = Battle();

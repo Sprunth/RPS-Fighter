@@ -76,6 +76,7 @@ namespace RPS_Fighter.Displays
             energyCost.Position     = spr.Position + new Vector2f(96, 134);
             cardTypeText.Position   = spr.Position + new Vector2f(12, 6);
         }
+        public Vector2f Position { get { return spr.Position; } }
 
         public void Draw(RenderTarget target, RenderStates states)
         {
