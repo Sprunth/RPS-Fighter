@@ -73,20 +73,31 @@ namespace RPS_Fighter
             return (c == Player1) ? Player2 : Player1;
         }
 
-        //public void Player1Turn()
-        //{
-        //    int i = 0;
-        //    while(true)
-        //    {
-        //        int x = Mouse.GetPosition().X;
-        //        int y = Mouse.GetPosition().Y;
-        //        Vector2f temp = new Vector2f((float)(x), (float)(y));
-        //        if(cs.cards[i].IsWithin(temp) && Mouse.IsButtonPressed(Mouse.Button.Left))
-        //        {
-        //            cs.cards[i].
-        //        }
-        //    }
-        //}
+        public void Player1Turn(RenderWindow window)
+        {
+            int i = 0;
+            while(true)
+            {
+                int x = Mouse.GetPosition(window).X;
+                int y = Mouse.GetPosition(window).Y;
+                Vector2f temp = new Vector2f((float)(x), (float)(y));
+                if(cs.cards[i].IsWithin(temp) && Mouse.IsButtonPressed(Mouse.Button.Left))
+                {
+                    SetPlayingCard(cs.cards[i].getCard(), Player1);
+                    break;
+                }
+                if (i == cs.cards.Count)
+                {
+                    i = 0;
+                }
+                else
+                {
+                    i++;
+                }
+            }
+
+            CurrentGameState = GameState.Player2Turn;
+        }
         /// <summary>
         /// Takes two cards and checks their types and values against each other. If one is superior to the other,
         /// then apply the superior card's effect to the inferior card's player, and declare the superior card's player
