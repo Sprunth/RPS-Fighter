@@ -65,8 +65,8 @@ namespace RPS_Fighter.Displays
 
         public void SetPosition(Vector2f pos)
         {
-            spr.Position = pos;
-            centerImg.Position = pos;
+            spr.Position            = pos;
+            centerImg.Position      = pos;
             strength.Position       = spr.Position + new Vector2f(16, 134);
             energyCost.Position     = spr.Position + new Vector2f(96, 134);
             cardTypeText.Position   = spr.Position + new Vector2f(12, 6);

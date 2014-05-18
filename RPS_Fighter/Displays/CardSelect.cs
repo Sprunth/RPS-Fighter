@@ -23,10 +23,12 @@ namespace RPS_Fighter.Displays
                 CardDisplay cd = new CardDisplay();
                 cd.UpdateInfo(deck.GetCardOfIndex(i));
                 Vector2u windowSize = Program.ActiveGame.WindowSize;
-                float width = windowSize.X / 4;
+                float width = (windowSize.X * (2/3.0f))/4.0f;
                 float height = windowSize.Y / 3;
+
+                Vector2f offset = new Vector2f(80, 90);
                 cd.SetPosition(
-                    new Vector2f(width * ((i % 3)+1), height * ((i % 2)+0.2f))
+                    new Vector2f(offset.X + width * ((i % 3)), offset.Y + height * ((i % 2)))
                     );
                 cards.Add(cd);
             }
