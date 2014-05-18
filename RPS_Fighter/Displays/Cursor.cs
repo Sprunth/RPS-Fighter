@@ -11,7 +11,7 @@ using SFML.Window;
 
 namespace RPS_Fighter.Displays
 {
-    class Cursor
+    class Cursor : IDisposable
     {
         Sprite cursor;
 
@@ -61,6 +61,16 @@ namespace RPS_Fighter.Displays
 
             window.Draw(cursor);
             
+        }
+
+        void IDisposable.Dispose()
+        {
+            cursor.Dispose();
+            tap.Dispose();
+            tapClick.Dispose();
+            star.Dispose();
+            foreach (Sprite s in stars)
+                s.Dispose();
         }
     }
 }

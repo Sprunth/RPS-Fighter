@@ -50,6 +50,11 @@ namespace RPS_Fighter.Displays
             p2Goal = Program.ActiveGame.WindowSize.X - 310;
         }
 
+        public void SlashReset()
+        {
+            slash.Scale = new Vector2f(1.4f, 1.4f);
+        }
+
         public void Update()
         {
             if (!AnimationDone)

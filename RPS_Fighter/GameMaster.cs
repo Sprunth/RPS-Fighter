@@ -91,6 +91,7 @@ namespace RPS_Fighter
                     {
                         mouseClicked = false;
                         bs.AnimationDone = false;
+                        bs.SlashReset();
                         BattleResult = Battle();
                         switch (BattleResult)
                         {
