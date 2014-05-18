@@ -64,8 +64,15 @@ namespace RPS_Fighter
         {
             switch(CurrentGameState)
             {
+                case GameState.Player1Turn:
+                    Player1Turn(Program.ActiveGame.RPSWindow);
+                    break;
+                case GameState.Player2Turn:
+                    break;
                 case GameState.Battle:
                     CurrentGameState = GameState.Combo;
+                    break;
+                case GameState.Combo:
                     break;
                 case GameState.Reset:
                     CurrentGameState = GameState.Player1Turn;
@@ -85,29 +92,21 @@ namespace RPS_Fighter
 
         public void Player1Turn(RenderWindow window)
         {
-            int i = 0;
-            while(true)
+            //Console.WriteLine("Stuff");
+            foreach (var item in cs.cards)
             {
                 int x = Mouse.GetPosition(window).X;
                 int y = Mouse.GetPosition(window).Y;
                 Vector2f temp = new Vector2f((float)(x), (float)(y));
-                if(cs.cards[i].IsWithin(temp) && mouseClicked)
+                if(item.IsWithin(temp) && mouseClicked)
                 {
+                    Console.WriteLine("Card chosen: " + item.getCard());
                     mouseClicked = false;
-                    SetPlayingCard(cs.cards[i].getCard(), Player1);
+                    SetPlayingCard(item.getCard(), Player1);
+                    CurrentGameState = GameState.Player2Turn;
                     break;
                 }
-                if (i == cs.cards.Count)
-                {
-                    i = 0;
-                }
-                else
-                {
-                    i++;
-                }
             }
-
-            CurrentGameState = GameState.Player2Turn;
         }
         /// <summary>
         /// Takes two cards and checks their types and values against each other. If one is superior to the other,

@@ -54,6 +54,8 @@ namespace RPS_Fighter
         {
             RPSWindow.DispatchEvents();
 
+            GM.UpdateGameState();
+
             if (Keyboard.IsKeyPressed(Keyboard.Key.Escape))
             { RPSWindow.Close(); }
 
