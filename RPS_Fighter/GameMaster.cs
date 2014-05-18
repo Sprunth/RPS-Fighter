@@ -72,6 +72,11 @@ namespace RPS_Fighter
                     Player2Turn(Program.ActiveGame.RPSWindow);
                     break;
                 case GameState.Battle:
+                    //int BattleResult = Battle();
+                    //switch(BattleResult)
+                    //{
+                    //    case 0:
+                    //}
                     CurrentGameState = GameState.Combo;
                     break;
                 case GameState.Combo:
