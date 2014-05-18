@@ -22,6 +22,7 @@ namespace RPS_Fighter
         public GameState CurrentGameState { get; private set; }
 
         CardSelect cs;
+        BattleScreen bs;
 
         bool mouseClicked = false;
 
@@ -42,6 +43,7 @@ namespace RPS_Fighter
 
             //test
             cs = new CardSelect(Player1);
+            bs = new BattleScreen();
             // end test
 
             Program.ActiveGame.RPSWindow.MouseButtonReleased += RPSWindow_MouseButtonReleased;
@@ -73,20 +75,23 @@ namespace RPS_Fighter
                     break;
                 case GameState.Battle:
                     int BattleResult = Battle();
-                    switch(BattleResult)
+                    if (bs.AnimationDone)
                     {
-                        case 0:
-                            Console.WriteLine("Player One wins this round");
-                            CurrentGameState = GameState.Combo;
-                            break;
-                        case 1:
-                            Console.WriteLine("Player Two wins this round");
-                            CurrentGameState = GameState.Combo;
-                            break;
-                        case 2:
-                            Console.WriteLine("The fighters are frozen!");
-                            CurrentGameState = GameState.Reset;
-                            break;
+                        switch (BattleResult)
+                        {
+                            case 0:
+                                Console.WriteLine("Player One wins this round");
+                                CurrentGameState = GameState.Combo;
+                                break;
+                            case 1:
+                                Console.WriteLine("Player Two wins this round");
+                                CurrentGameState = GameState.Combo;
+                                break;
+                            case 2:
+                                Console.WriteLine("The fighters are frozen!");
+                                CurrentGameState = GameState.Reset;
+                                break;
+                        }
                     }
                     break;
                 case GameState.Combo:
@@ -123,7 +128,15 @@ namespace RPS_Fighter
 
         public void Draw(RenderWindow window)
         {
-            cs.Draw(window);
+            switch(CurrentGameState)
+            {
+                case GameState.Player1Turn:
+                case GameState.Player2Turn:
+                    { cs.Draw(window); break; }
+                case GameState.Battle:
+                    { bs.Draw(window); break; }
+                
+            }
         }
 
         public Character GetOtherCharacter(Character c)
