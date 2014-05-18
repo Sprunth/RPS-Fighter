@@ -91,6 +91,11 @@ namespace RPS_Fighter
                 p1Card.ApplyEffect(Player2);
                 return 0;
             }
+            else if((p2Card.cardType == p1Card.cardType) &&(p1Card.cardType == CardType.Attack))
+            {
+                if(p)
+            }
+
         }
     }
 
