@@ -25,6 +25,11 @@ namespace RPS_Fighter.Displays
             font = Program.ActiveGame.font;
         }
 
+        public Card getCard()
+        {
+            return card;
+        }
+
         public void UpdateInfo(Card c)
         {
             card = c;
