@@ -27,12 +27,15 @@ namespace RPS_Fighter
 
         static RenderWindow titleWindow;
 
+        static int page = 0;
+        static Sprite title;
+
         private static void DisplayTitleScreen()
         {
             titleWindow = new RenderWindow(new SFML.Window.VideoMode(1200, 600), "RPS Fighter", SFML.Window.Styles.Close);
             titleWindow.MouseButtonReleased += window_MouseButtonReleased;
             titleWindow.SetMouseCursorVisible(false);
-            Sprite title = new Sprite(new Texture("Images/TitleScreen3.png"));
+            title = new Sprite(new Texture("Images/TitleScreen3.png"));
             while (titleWindow.IsOpen())
             {
                 titleWindow.DispatchEvents();
@@ -44,7 +47,15 @@ namespace RPS_Fighter
 
         static void window_MouseButtonReleased(object sender, SFML.Window.MouseButtonEventArgs e)
         {
-            titleWindow.Close();
+            if (page == 0)
+            {
+                title = new Sprite(new Texture("Images/RulesPage3.png"));
+                page++;
+            }
+            else
+            {
+                titleWindow.Close();
+            }
         }
     }
 }
