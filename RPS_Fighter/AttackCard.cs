@@ -10,14 +10,14 @@ namespace RPS_Fighter
     {
         public AttackCard(int strength, int energyCost) : base()
         {
-            this.strength = strength;
-            this.energyCost = energyCost;
-            cardType = CardType.Attack;
+            this.Strength = strength;
+            this.EnergyCost = energyCost;
+            TypeOfCard = CardType.Attack;
         }
 
         public override void ApplyEffect(Character character)
         {
-            character.HP -= strength;
+            character.HP -= Strength;
 
             base.ApplyEffect(character);
         }

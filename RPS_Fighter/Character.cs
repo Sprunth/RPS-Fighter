@@ -22,6 +22,12 @@ namespace RPS_Fighter
 
         }
 
+        public void Draw()
+        {
+            Card c = CDeck.Draw();
+            Hand.AddCard(c); // TODO: Check that there aren't more than 6 cards in hand
+        }
+
         public void PlayCard(Card c)
         {
             Hand.RemoveCard(c);

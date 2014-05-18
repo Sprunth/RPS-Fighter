@@ -10,14 +10,14 @@ namespace RPS_Fighter
     {
         public GrappleCard(int strength, int energyCost) : base()
         {
-            this.strength = strength;
-            this.energyCost = energyCost;
-            cardType = CardType.Grapple;
+            this.Strength = strength;
+            this.EnergyCost = energyCost;
+            TypeOfCard = CardType.Grapple;
         }
 
         public override void ApplyEffect(Character character)
         {
-            character.HP -= strength;
+            character.HP -= Strength;
 
             base.ApplyEffect(character);
         }
