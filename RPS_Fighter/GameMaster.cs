@@ -22,7 +22,6 @@ namespace RPS_Fighter
         public GameState CurrentGameState { get; private set; }
 
         CardSelect cs;
-        BattleScreen bs;
 
         bool mouseClicked = false;
 
@@ -43,7 +42,6 @@ namespace RPS_Fighter
 
             //test
             cs = new CardSelect(Player1);
-            bs = new BattleScreen();
             // end test
 
             Program.ActiveGame.RPSWindow.MouseButtonReleased += RPSWindow_MouseButtonReleased;
@@ -75,23 +73,24 @@ namespace RPS_Fighter
                     break;
                 case GameState.Battle:
                     int BattleResult = Battle();
-                    if (bs.AnimationDone)
+                    switch(BattleResult)
                     {
-                        switch (BattleResult)
-                        {
-                            case 0:
-                                Console.WriteLine("Player One wins this round");
-                                CurrentGameState = GameState.Combo;
-                                break;
-                            case 1:
-                                Console.WriteLine("Player Two wins this round");
-                                CurrentGameState = GameState.Combo;
-                                break;
-                            case 2:
-                                Console.WriteLine("The fighters are frozen!");
-                                CurrentGameState = GameState.Reset;
-                                break;
-                        }
+                        case 0:
+                            Console.WriteLine("Player One wins this round");
+                            CurrentGameState = GameState.Combo;
+                            break;
+                        case 1:
+                            Console.WriteLine("Player Two wins this round");
+                            CurrentGameState = GameState.Combo;
+                            break;
+                        case 2:
+                            Console.WriteLine("Glancing blows! A fierce battle!");
+                            CurrentGameState = GameState.Reset;
+                            break;
+                        case 3:
+                            Console.WriteLine("The fighters are frozen!");
+                            CurrentGameState = GameState.Reset;
+                            break;
                     }
                     break;
                 case GameState.Combo:
@@ -128,15 +127,7 @@ namespace RPS_Fighter
 
         public void Draw(RenderWindow window)
         {
-            switch(CurrentGameState)
-            {
-                case GameState.Player1Turn:
-                case GameState.Player2Turn:
-                    { cs.Draw(window); break; }
-                case GameState.Battle:
-                    { bs.Draw(window); break; }
-                
-            }
+            cs.Draw(window);
         }
 
         public Character GetOtherCharacter(Character c)
@@ -254,7 +245,7 @@ namespace RPS_Fighter
 
                 }
             }
-            return 2;
+            return 3;
         }
         /// <summary>
         /// Resets player energies and checks health of players. If either is below zero, the other is the winner.
