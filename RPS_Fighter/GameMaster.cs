@@ -24,6 +24,7 @@ namespace RPS_Fighter
 
         CardSelect cs;
         BattleScreen bs;
+        NewTurn nt;
 
         public int BattleResult { get; private set; }
 
@@ -52,6 +53,7 @@ namespace RPS_Fighter
         {
             cs = new CardSelect(Player1);
             bs = new BattleScreen();
+            nt = new NewTurn();
         }
 
         void RPSWindow_MouseButtonReleased(object sender, MouseButtonEventArgs e)
@@ -167,31 +169,43 @@ namespace RPS_Fighter
                     
                     break;
                 case GameState.Reset:
-                    int resetVal = Reset();
-                    switch(resetVal)
                     {
-                        case 0:
-                            Debug.WriteLine("Player One is victorious! *fanfare*");
-                            Player1.HP = 15;
-                            Player2.HP = 15;
-                            break;
-                        case 1:
-                            Debug.WriteLine("Player Two has crushed the opposition! *hooray*");
-                            Player2.HP = 15;
-                            Player1.HP = 15;
-                            break;
-                        case 2:
-                            Debug.WriteLine("In war, there are no winners. *solemn music*");
-                            Player1.HP = 15;
-                            Player2.HP = 15;
-                            break;
-                        case 3:
-                            Debug.WriteLine("The battle continues! *Intense music*");
-                            break;
+                        int resetVal = Reset();
+                        switch (resetVal)
+                        {
+                            case 0:
+                                Debug.WriteLine("Player One is victorious! *fanfare*");
+                                Player1.HP = 15;
+                                Player2.HP = 15;
+                                break;
+                            case 1:
+                                Debug.WriteLine("Player Two has crushed the opposition! *hooray*");
+                                Player2.HP = 15;
+                                Player1.HP = 15;
+                                break;
+                            case 2:
+                                Debug.WriteLine("In war, there are no winners. *solemn music*");
+                                Player1.HP = 15;
+                                Player2.HP = 15;
+                                break;
+                            case 3:
+                                Debug.WriteLine("The battle continues! *Intense music*");
+                                break;
+                        }
+                        CurrentGameState = GameState.NewTurn;
+                        break;
                     }
-                    CurrentGameState = GameState.Player1Turn;
-                    cs = new CardSelect(Player1);
-                    break;
+                case GameState.NewTurn:
+                    {
+                        if (mouseClicked)
+                        {
+                            mouseClicked = false;
+                            CurrentGameState = GameState.Player1Turn;
+                            cs = new CardSelect(Player1);
+                        }
+                        break;
+                    }
+                    
             }
             
         }
@@ -275,6 +289,8 @@ namespace RPS_Fighter
                     { bs.Draw(window); break; }
                 case GameState.Combo:
                     { cs.Draw(window); break; }
+                case GameState.NewTurn:
+                    { nt.Draw(window); break; }
             }
         }
 
@@ -435,5 +451,5 @@ namespace RPS_Fighter
         }
     }
 
-    public enum GameState { Player1Turn, Player2Turn, Battle, Combo, Reset }
+    public enum GameState { Player1Turn, Player2Turn, Battle, Combo, Reset, NewTurn }
 }
