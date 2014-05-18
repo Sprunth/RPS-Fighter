@@ -23,6 +23,8 @@ namespace RPS_Fighter
 
         CardSelect cs;
 
+        bool mouseClicked = false;
+
         public GameMaster()
         {
             Deck p1Deck = new Deck();
@@ -40,6 +42,14 @@ namespace RPS_Fighter
 
             //test
             cs = new CardSelect(Player1.Hand);
+            // end test
+
+            Program.ActiveGame.RPSWindow.MouseButtonReleased += RPSWindow_MouseButtonReleased;
+        }
+
+        void RPSWindow_MouseButtonReleased(object sender, MouseButtonEventArgs e)
+        {
+            mouseClicked = true;
         }
 
         public void SetPlayingCard(Card c, Character character)
@@ -81,8 +91,9 @@ namespace RPS_Fighter
                 int x = Mouse.GetPosition(window).X;
                 int y = Mouse.GetPosition(window).Y;
                 Vector2f temp = new Vector2f((float)(x), (float)(y));
-                if(cs.cards[i].IsWithin(temp) && Mouse.IsButtonPressed(Mouse.Button.Left))
+                if(cs.cards[i].IsWithin(temp) && mouseClicked)
                 {
+                    mouseClicked = false;
                     SetPlayingCard(cs.cards[i].getCard(), Player1);
                     break;
                 }

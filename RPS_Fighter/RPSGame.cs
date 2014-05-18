@@ -27,7 +27,7 @@ namespace RPS_Fighter
             WindowSize = new Vector2u(1200, 600);
             ContextSettings cs = new ContextSettings();
             cs.AntialiasingLevel = 8;
-            RPSWindow = new RenderWindow(new VideoMode(WindowSize.X, WindowSize.Y),"RPS Fighter", Styles.Titlebar | Styles.Close, cs);
+            RPSWindow = new RenderWindow(new VideoMode(WindowSize.X, WindowSize.Y), "RPS Fighter", Styles.Titlebar | Styles.Close, cs);
             RPSWindow.Closed += window_Closed;
             RPSWindow.SetMouseCursorVisible(false);
             RPSWindow.SetFramerateLimit(60);
@@ -63,7 +63,6 @@ namespace RPS_Fighter
         private void Draw()
         {
             RPSWindow.Clear(new Color(20,30,40));
-            //draw
 
             GM.Draw(RPSWindow);
 
