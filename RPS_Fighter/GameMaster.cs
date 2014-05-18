@@ -15,8 +15,6 @@ namespace RPS_Fighter
     {
         public static GameMaster ActiveGM { get { return Program.ActiveGame.GM; } }
 
-        CompanionAppHelper cah;
-
         Character Player1 { get; set; }
         Character Player2 { get; set; }
 
@@ -53,7 +51,6 @@ namespace RPS_Fighter
 
         public void Initialize()
         {
-            cah = new CompanionAppHelper();
 
             cs = new CardSelect(Player1);
             bs = new BattleScreen();
@@ -75,7 +72,6 @@ namespace RPS_Fighter
 
         public void UpdateGameState()
         {
-            cah.Update();
             switch(CurrentGameState)
             {
                 case GameState.Player1Turn:
