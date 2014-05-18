@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using RPS_Fighter.Displays;
 using SFML.Graphics;
 using SFML.Window;
+using System.Diagnostics;
 
 namespace RPS_Fighter
 {
@@ -89,21 +90,21 @@ namespace RPS_Fighter
                         switch (BattleResult)
                         {
                             case 0:
-                                Console.WriteLine("Player One wins this round");
+                                Debug.WriteLine("Player One wins this round");
                                 CurrentGameState = GameState.Combo;
                                 cs = new CardSelect(Player1);
                                 break;
                             case 1:
-                                Console.WriteLine("Player Two wins this round");
+                                Debug.WriteLine("Player Two wins this round");
                                 CurrentGameState = GameState.Combo;
                                 cs = new CardSelect(Player2);
                                 break;
                             case 2:
-                                Console.WriteLine("Glancing blows! A fierce battle!");
+                                Debug.WriteLine("Glancing blows! A fierce battle!");
                                 CurrentGameState = GameState.Reset;
                                 break;
                             case 3:
-                                Console.WriteLine("The fighters are frozen!");
+                                Debug.WriteLine("The fighters are frozen!");
                                 CurrentGameState = GameState.Reset;
                                 break;
                         }
@@ -136,22 +137,22 @@ namespace RPS_Fighter
                     switch(resetVal)
                     {
                         case 0:
-                            Console.WriteLine("Player One is victorious! *fanfare*");
+                            Debug.WriteLine("Player One is victorious! *fanfare*");
                             Player1.HP = 15;
                             Player2.HP = 15;
                             break;
                         case 1:
-                            Console.WriteLine("Player Two has crushed the opposition! *hooray*");
+                            Debug.WriteLine("Player Two has crushed the opposition! *hooray*");
                             Player2.HP = 15;
                             Player1.HP = 15;
                             break;
                         case 2:
-                            Console.WriteLine("In war, there are no winners. *solemn music*");
+                            Debug.WriteLine("In war, there are no winners. *solemn music*");
                             Player1.HP = 15;
                             Player2.HP = 15;
                             break;
                         case 3:
-                            Console.WriteLine("The battle continues! *Intense music*");
+                            Debug.WriteLine("The battle continues! *Intense music*");
                             break;
                     }
                     CurrentGameState = GameState.Player1Turn;
@@ -181,7 +182,7 @@ namespace RPS_Fighter
                             Vector2f temp = new Vector2f((float)(x), (float)(y));
                             if (item.IsWithin(temp) && mouseClicked)
                             {
-                                Console.WriteLine("Card chosen in combo: " + item.getCard());
+                                Debug.WriteLine("Card chosen in combo: " + item.getCard());
                                 mouseClicked = false;
                                 if ((item.getCard().TypeOfCard == CardType.Block) || (item.getCard().TypeOfCard == CardType.Grapple))
                                 {
@@ -211,7 +212,7 @@ namespace RPS_Fighter
                             Vector2f temp = new Vector2f((float)(x), (float)(y));
                             if (item.IsWithin(temp) && mouseClicked)
                             {
-                                Console.WriteLine("Card chosen in combo: " + item.getCard());
+                                Debug.WriteLine("Card chosen in combo: " + item.getCard());
                                 mouseClicked = false;
                                 if ((item.getCard().TypeOfCard == CardType.Block) || (item.getCard().TypeOfCard == CardType.Grapple))
                                 {
@@ -250,7 +251,7 @@ namespace RPS_Fighter
 
         public void Player1Turn(RenderWindow window)
         {
-            //Console.WriteLine("Stuff");
+            //Debug.WriteLine("Stuff");
             foreach (var item in cs.cards)
             {
                 int x = Mouse.GetPosition(window).X;
@@ -258,7 +259,7 @@ namespace RPS_Fighter
                 Vector2f temp = new Vector2f((float)(x), (float)(y));
                 if(item.IsWithin(temp) && mouseClicked)
                 {
-                    Console.WriteLine("Card chosen: " + item.getCard());
+                    Debug.WriteLine("Card chosen: " + item.getCard());
                     mouseClicked = false;
                     Player1.PlayCard(item.getCard());
                     CurrentGameState = GameState.Player2Turn;
@@ -269,7 +270,7 @@ namespace RPS_Fighter
 
         public void Player2Turn(RenderWindow window)
         {
-            //Console.WriteLine("Stuff");
+            //Debug.WriteLine("Stuff");
             foreach (var item in cs.cards)
             {
                 int x = Mouse.GetPosition(window).X;
@@ -277,7 +278,7 @@ namespace RPS_Fighter
                 Vector2f temp = new Vector2f((float)(x), (float)(y));
                 if (item.IsWithin(temp) && mouseClicked)
                 {
-                    Console.WriteLine("Card chosen: " + item.getCard());
+                    Debug.WriteLine("Card chosen: " + item.getCard());
                     mouseClicked = false;
                     Player2.PlayCard(item.getCard());
                     CurrentGameState = GameState.Battle;
