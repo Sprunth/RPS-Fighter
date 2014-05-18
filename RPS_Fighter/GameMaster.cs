@@ -21,10 +21,13 @@ namespace RPS_Fighter
         {
             Rand = new Random();
 
+            Deck p1Deck = new Deck();
+            Deck p2Deck = new Deck();
+            p1Deck.StandardDeckPopulate();
+            p2Deck.StandardDeckPopulate();
 
-
-            Player1 = new Character();
-            Player2 = new Character();
+            Player1 = new Character(p1Deck);
+            Player2 = new Character(p2Deck);
         }
 
         public void SetPlayingCard(Card c, Character character)

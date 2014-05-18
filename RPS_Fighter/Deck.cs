@@ -15,7 +15,58 @@ namespace RPS_Fighter
 
         }
 
-        
+        public void StandardDeckPopulate()
+        {
+            List<Card> attack = new List<Card>();
+            List<Card> grapple = new List<Card>();
+            List<Card> block = new List<Card>();
+
+            for (int i = 0; i < 5;i++ )
+                attack.Add(new AttackCard(1, 1));
+            for (int i = 0; i < 3; i++)
+                attack.Add(new AttackCard(2, 2));
+            for (int i = 0; i < 2; i++)
+                attack.Add(new AttackCard(3, 4));
+            attack.Add(new AttackCard(5, 8));
+
+            for (int i = 0; i < 5; i++)
+                grapple.Add(new GrappleCard(1, 1));
+            for (int i = 0; i < 3; i++)
+                grapple.Add(new GrappleCard(2, 2));
+            for (int i = 0; i < 2; i++)
+                grapple.Add(new GrappleCard(3, 4));
+            grapple.Add(new GrappleCard(5, 8));
+
+            for (int i = 0; i < 3; i++)
+                block.Add(new BlockCard(4));
+            for (int i = 0; i < 3; i++)
+                block.Add(new BlockCard(5));
+            block.Add(new BlockCard(6));
+
+            for(int i=0;i<5;i++)
+            {
+                int index = GameMaster.ActiveGM.Rand.Next(attack.Count);
+                Card c = attack[index];
+                cards.Add(c);
+                attack.RemoveAt(index);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                int index = GameMaster.ActiveGM.Rand.Next(grapple.Count);
+                Card c = grapple[index];
+                cards.Add(c);
+                grapple.RemoveAt(index);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                int index = GameMaster.ActiveGM.Rand.Next(block.Count);
+                Card c = block[index];
+                cards.Add(c);
+                block.RemoveAt(index);
+            }
+            // cards deck now has 5 atk, 3 grap, 3 blk
+            this.Shuffle();
+        }
 
         public void AddCard(Card c)
         {
