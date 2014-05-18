@@ -51,6 +51,21 @@ namespace RPS_Fighter
             DrawCard();
         }
 
+        public void PlayCardCombo(Card c)
+        {
+            Hand.RemoveCard(c);
+            Character enemy = GameMaster.ActiveGM.GetOtherCharacter(this);
+            Program.ActiveGame.GM.SetPlayingCard(c, this);
+            Discard.AddCard(c);
+            if (CDeck.Count == 0)
+            {
+                CDeck = Discard;
+                Discard = new Deck();
+                CDeck.Shuffle();
+            }
+            //DrawCard();
+        }
+
         public void DecreaseEnergy(Card c)
         {
             CurEnergy -= c.EnergyCost;

@@ -110,7 +110,26 @@ namespace RPS_Fighter
                     }
                     break;
                 case GameState.Combo:
-                    CurrentGameState = GameState.Reset;
+                    if (ComboFlag)
+                    {
+                        CurrentGameState = GameState.Reset;
+                        ComboFlag = false;
+                        if (BattleResult == 0 && Player1.HandCount <= 2)
+                        {
+                            Player1.DrawCard();
+                            Player1.DrawCard();
+                        }
+                        if (BattleResult == 1 && Player2.HandCount <= 2)
+                        {
+                            Player2.DrawCard();
+                            Player2.DrawCard();
+                        }
+                    }
+                    else
+                    {
+                        Combo(Program.ActiveGame.RPSWindow);
+                    }
+                    
                     break;
                 case GameState.Reset:
                     int resetVal = Reset();
@@ -142,36 +161,69 @@ namespace RPS_Fighter
             
         }
 
-        //public void Combo(RenderWindow window)
-        //{
-        //    Player2.Hand.SetLeastEnergyCard();
-        //    Player1.Hand.SetLeastEnergyCard();
-        //    switch (BattleResult)
-        //    {
-        //        case 0:
-        //            if (Player1.CurEnergy < Player1.Hand.LeastEnergy)
-        //            {
-        //                ComboFlag = true; //stop comboing
-        //            }
-        //            else
-        //            {
-        //                foreach (var item in cs.cards)
-        //                {
-        //                    int x = Mouse.GetPosition(window).X;
-        //                    int y = Mouse.GetPosition(window).Y;
-        //                    Vector2f temp = new Vector2f((float)(x), (float)(y));
-        //                    if (item.IsWithin(temp) && mouseClicked)
-        //                    {
-        //                        Console.WriteLine("Card chosen: " + item.getCard());
-        //                        mouseClicked = false;
-        //                        Player1.PlayCard(item.getCard());
-        //                        CurrentGameState = GameState.Player2Turn;
-        //                        break;
-        //                    }
-        //                }
-        //            }
-        //    }
-        //}
+        public void Combo(RenderWindow window)
+        {
+            Player2.Hand.SetLeastEnergyCard();
+            Player1.Hand.SetLeastEnergyCard();
+            switch (BattleResult)
+            {
+                case 0:
+                    if (Player1.CurEnergy < Player1.Hand.LeastEnergy || Player1.HandCount == 0)
+                    {
+                        ComboFlag = true; //stop comboing
+                    }
+                    else
+                    {
+                        foreach (var item in cs.cards)
+                        {
+                            int x = Mouse.GetPosition(window).X;
+                            int y = Mouse.GetPosition(window).Y;
+                            Vector2f temp = new Vector2f((float)(x), (float)(y));
+                            if (item.IsWithin(temp) && mouseClicked)
+                            {
+                                Console.WriteLine("Card chosen in combo: " + item.getCard());
+                                mouseClicked = false;
+                                if ((item.getCard().TypeOfCard == CardType.Block) || (item.getCard().TypeOfCard == CardType.Grapple))
+                                {
+                                    ComboFlag = true; //stop comboing
+                                }
+                                item.getCard().ApplyEffect(Player2);
+                                Player1.PlayCardCombo(item.getCard());
+                                //CurrentGameState = GameState.Player2Turn;
+                                break;
+                            }
+                        }
+                    }
+                    break;
+                case 1:
+                    if (Player2.CurEnergy < Player2.Hand.LeastEnergy)
+                    {
+                        ComboFlag = true; //stop comboing
+                    }
+                    else
+                    {
+                        foreach (var item in cs.cards)
+                        {
+                            int x = Mouse.GetPosition(window).X;
+                            int y = Mouse.GetPosition(window).Y;
+                            Vector2f temp = new Vector2f((float)(x), (float)(y));
+                            if (item.IsWithin(temp) && mouseClicked)
+                            {
+                                Console.WriteLine("Card chosen in combo: " + item.getCard());
+                                mouseClicked = false;
+                                if ((item.getCard().TypeOfCard == CardType.Block) || (item.getCard().TypeOfCard == CardType.Grapple))
+                                {
+                                    ComboFlag = true; //stop comboing
+                                }
+                                item.getCard().ApplyEffect(Player1);
+                                Player2.PlayCardCombo(item.getCard());
+                                break;
+                            }
+                        }
+                    }
+                    break;
+            }
+        }
 
         public void Draw(RenderWindow window)
         {
@@ -240,7 +292,7 @@ namespace RPS_Fighter
         {
             //check card strengths
             if ((P1Card.TypeOfCard == CardType.Attack) && (P2Card.TypeOfCard == CardType.Block))
-                return 1; //
+                return 3; //
             else if ((P1Card.TypeOfCard == CardType.Block) && (P2Card.TypeOfCard == CardType.Grapple))
             {
                 P2Card.ApplyEffect(Player1);
@@ -254,7 +306,7 @@ namespace RPS_Fighter
                 return 1;
             }
             else if ((P2Card.TypeOfCard == CardType.Attack) && (P1Card.TypeOfCard == CardType.Block))
-                return 0;
+                return 3;
             else if((P2Card.TypeOfCard == CardType.Block) && (P1Card.TypeOfCard == CardType.Grapple))
             {
                 P1Card.ApplyEffect(Player2);
