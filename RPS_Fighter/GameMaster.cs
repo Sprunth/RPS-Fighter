@@ -58,8 +58,18 @@ namespace RPS_Fighter
         {
             return (c == Player1) ? Player2 : Player1;
         }
-
-        //public 
+        /// <summary>
+        /// Takes two cards and checks their types and values against each other. If one is superior to the other,
+        /// then apply the superior card's effect to the inferior card's player, and declare the superior card's player
+        /// as the victor.
+        /// </summary>
+        /// <returns></returns>
+        public int Battle()
+        {
+            //check card strengths
+            if ((p1Card.cardType == CardType.Attack) && (p2Card.cardType == CardType.Block))
+                return 1; //
+        }
     }
 
     public enum GameState { Player1Turn, Player2Turn, Battle, Combo, Reset }

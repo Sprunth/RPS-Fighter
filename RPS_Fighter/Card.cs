@@ -10,7 +10,7 @@ namespace RPS_Fighter
     {
         protected int strength;
         protected int energyCost;
-        protected CardType cardType;
+        public CardType cardType;
 
         public Card()
         {
