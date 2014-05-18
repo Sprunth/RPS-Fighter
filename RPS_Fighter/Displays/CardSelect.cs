@@ -13,7 +13,7 @@ namespace RPS_Fighter.Displays
 {
     public class CardSelect
     {
-        List<CardDisplay> cards = new List<CardDisplay>();
+        public List<CardDisplay> cards = new List<CardDisplay>();
 
         public CardSelect(Deck deck)
         {
