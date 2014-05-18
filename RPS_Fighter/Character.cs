@@ -25,6 +25,8 @@ namespace RPS_Fighter
             {
                 DrawCard();
             }
+
+            HP = 15;
         }
 
         public void DrawCard()
