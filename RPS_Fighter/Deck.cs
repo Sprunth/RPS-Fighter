@@ -9,6 +9,7 @@ namespace RPS_Fighter
     public class Deck
     {
         List<Card> cards;
+        public int Count { get { return cards.Count; } }
         public Deck()
         {
             cards = new List<Card>();
@@ -114,6 +115,8 @@ namespace RPS_Fighter
 
         public Card GetLastCard()
         {
+            if (cards.Count == 0)
+            { return null; }
             return cards.Last();
         }
     }
