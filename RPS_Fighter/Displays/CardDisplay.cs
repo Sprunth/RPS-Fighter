@@ -11,7 +11,7 @@ using SFML.Window;
 
 namespace RPS_Fighter.Displays
 {
-    class CardDisplay : Drawable
+    public class CardDisplay : Drawable
     {
         Sprite spr, centerImg;
         Text strength;
