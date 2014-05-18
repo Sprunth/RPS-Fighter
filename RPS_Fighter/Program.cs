@@ -31,6 +31,7 @@ namespace RPS_Fighter
         {
             titleWindow = new RenderWindow(new SFML.Window.VideoMode(1200, 600), "RPS Fighter", SFML.Window.Styles.Close);
             titleWindow.MouseButtonReleased += window_MouseButtonReleased;
+            titleWindow.SetMouseCursorVisible(false);
             Sprite title = new Sprite(new Texture("Images/TitleScreen3.png"));
             while (titleWindow.IsOpen())
             {

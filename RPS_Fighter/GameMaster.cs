@@ -118,11 +118,13 @@ namespace RPS_Fighter
                         {
                             Player1.DrawCard();
                             Player1.DrawCard();
+                            cs = new CardSelect(Player1);
                         }
                         if (BattleResult == 1 && Player2.HandCount <= 2)
                         {
                             Player2.DrawCard();
                             Player2.DrawCard();
+                            cs = new CardSelect(Player2);
                         }
                     }
                     else
