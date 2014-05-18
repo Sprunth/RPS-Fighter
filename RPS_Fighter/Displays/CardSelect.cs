@@ -20,6 +20,7 @@ namespace RPS_Fighter.Displays
         Card lastDiscardCard;
 
         Text deckLabel, discardLabel;
+        Text gameStateStatus;
 
         public CardSelect(Character character)
         {
@@ -53,6 +54,15 @@ namespace RPS_Fighter.Displays
             discardLabel = new Text("Discard", Program.ActiveGame.font, 28);
             deckLabel.Position = new Vector2f(Program.ActiveGame.WindowSize.X - 160, 40);
             discardLabel.Position = new Vector2f(Program.ActiveGame.WindowSize.X - 160, Program.ActiveGame.WindowSize.Y - 150);
+
+            string gameStateString = "";
+            switch(GameMaster.ActiveGM.CurrentGameState)
+            {
+                case GameState.Player1Turn: { gameStateString = "Player 1's Turn"; break; }
+                case GameState.Player2Turn: { gameStateString = "Player 2's Turn"; break; }
+                case GameState.Combo:
+                    { break; }
+            }
         }
 
         public void Draw(RenderWindow window)

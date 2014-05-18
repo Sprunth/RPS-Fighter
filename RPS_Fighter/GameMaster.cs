@@ -24,6 +24,8 @@ namespace RPS_Fighter
         CardSelect cs;
         BattleScreen bs;
 
+        public int BattleResult { get; private set; }
+
         bool mouseClicked = false;
 
         public GameMaster()
@@ -77,7 +79,7 @@ namespace RPS_Fighter
                     {
                         mouseClicked = false;
                         bs.AnimationDone = false;
-                        int BattleResult = Battle();
+                        BattleResult = Battle();
                         switch (BattleResult)
                         {
                             case 0:
