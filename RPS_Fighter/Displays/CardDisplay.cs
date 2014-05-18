@@ -47,6 +47,7 @@ namespace RPS_Fighter.Displays
 
         public void Draw(RenderTarget target, RenderStates states)
         {
+            states.Transform = Transform.Identity;
             target.Draw(rect);
             target.Draw(strength);
             target.Draw(energyCost);
