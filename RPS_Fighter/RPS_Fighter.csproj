@@ -79,6 +79,7 @@
     <Compile Include="Displays\CardDisplay.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="Deck.cs" />
+    <Compile Include="Displays\CardSelect.cs" />
     <Compile Include="GameMaster.cs" />
     <Compile Include="GrappleCard.cs" />
     <Compile Include="Program.cs" />

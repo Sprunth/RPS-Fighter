@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPS_Fighter
 {
-    class Deck
+    public class Deck
     {
         List<Card> cards;
         public Deck()

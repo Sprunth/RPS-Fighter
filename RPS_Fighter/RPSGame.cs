@@ -55,11 +55,14 @@ namespace RPS_Fighter
 
         private void Draw()
         {
-            window.Clear();
+            window.Clear(new Color(20,30,40));
             //draw
             Text t = new Text("Hello World", font, 24);
             t.Position = new Vector2f(20, 30);
             window.Draw(t);
+
+            GM.Draw(window);
+
             window.Display();
         }
 

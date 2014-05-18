@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using RPS_Fighter.Displays;
+using SFML.Graphics;
+
 namespace RPS_Fighter
 {
     class GameMaster
@@ -16,6 +19,8 @@ namespace RPS_Fighter
         Card p1Card, p2Card;
 
         public GameState CurrentGameState { get; private set; }
+
+        CardSelect cs;
 
         public GameMaster()
         {
@@ -31,6 +36,9 @@ namespace RPS_Fighter
             Player2.PrintDeck();
 
             CurrentGameState = GameState.Player1Turn;
+
+            //test
+            cs = new CardSelect(Player1.Hand);
         }
 
         public void SetPlayingCard(Card c, Character character)
@@ -52,6 +60,11 @@ namespace RPS_Fighter
                     CurrentGameState = GameState.Player1Turn;
                     break;
             }
+        }
+
+        public void Draw(RenderWindow window)
+        {
+            cs.Draw(window);
         }
 
         public Character GetOtherCharacter(Character c)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPS_Fighter
 {
-    class Character
+    public class Character
     {
         public int HP { get; set; }
         public int MaxEnergy { get; private set; }
@@ -19,10 +19,15 @@ namespace RPS_Fighter
         public Character(Deck initialDeck)
         {
             CDeck = initialDeck;
-
+            Hand = new Deck();
+            Discard = new Deck();
+            for(int i=0;i<6;i++)
+            {
+                DrawCard();
+            }
         }
 
-        public void Draw()
+        public void DrawCard()
         {
             Card c = CDeck.Draw();
             Hand.AddCard(c); // TODO: Check that there aren't more than 6 cards in hand

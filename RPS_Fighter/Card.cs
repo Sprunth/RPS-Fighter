@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPS_Fighter
 {
-    class Card
+    public class Card
     {
         public int Strength;
         public int EnergyCost;
