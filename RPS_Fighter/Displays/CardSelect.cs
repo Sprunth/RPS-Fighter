@@ -25,6 +25,7 @@ namespace RPS_Fighter.Displays
         Sprite background;
 
         Sprite hpBar, mpBar;
+        Text hpLabel, mpLabel;
 
         public CardSelect(Character character)
         {
@@ -91,13 +92,19 @@ namespace RPS_Fighter.Displays
 
             background = new Sprite(new Texture("Images/GameMat2.png"));
 
+            #region hpLabel mpLabel
             hpBar = new Sprite(new Texture("Images/HPBar.png"));
             mpBar = new Sprite(new Texture("Images/MPBar.png"));
             hpBar.Scale = new Vector2f(1f, 0.1f);
             mpBar.Scale = new Vector2f(1f, 0.1f);
             hpBar.Position = new Vector2f(430, 20);
             mpBar.Position = new Vector2f(430, 40);
-            
+
+            hpLabel = new Text(GameMaster.ActiveGM.Player1HP.ToString(), Program.ActiveGame.font, 14);
+            mpLabel = new Text(GameMaster.ActiveGM.Player2HP.ToString(), Program.ActiveGame.font, 14);
+            hpLabel.Position = hpBar.Position;
+            mpLabel.Position = mpBar.Position;
+            #endregion
         }
 
         public void Update()
@@ -107,7 +114,11 @@ namespace RPS_Fighter.Displays
                 disp.Update();
             }
             hpBar.Scale = new Vector2f(GameMaster.ActiveGM.Player1HP / 30f, 0.1f);
-            mpBar.Scale = new Vector2f(GameMaster.ActiveGM.Player1MP / GameMaster.ActiveGM.Player1MPMax, 0.1f);
+            mpBar.Scale = new Vector2f(GameMaster.ActiveGM.Player1MP / 15f, 0.1f);
+            hpLabel = new Text(GameMaster.ActiveGM.Player1HP.ToString(), Program.ActiveGame.font, 14);
+            mpLabel = new Text(GameMaster.ActiveGM.Player2HP.ToString(), Program.ActiveGame.font, 14);
+            hpLabel.Position = hpBar.Position;
+            mpLabel.Position = mpBar.Position;
         }
 
         public void Draw(RenderWindow window)
@@ -128,6 +139,8 @@ namespace RPS_Fighter.Displays
 
             window.Draw(hpBar);
             window.Draw(mpBar);
+            window.Draw(hpLabel);
+            window.Draw(mpLabel);
             
         }
     }

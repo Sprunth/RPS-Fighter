@@ -214,6 +214,7 @@ namespace RPS_Fighter
         {
             Player2.Hand.SetLeastEnergyCard();
             Player1.Hand.SetLeastEnergyCard();
+            cs.Update();
             switch (BattleResult)
             {
                 case 0:
