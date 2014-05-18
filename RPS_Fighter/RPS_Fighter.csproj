@@ -76,6 +76,7 @@
     <Compile Include="AttackCard.cs" />
     <Compile Include="BlockCard.cs" />
     <Compile Include="Card.cs" />
+    <Compile Include="Displays\BattleScreen.cs" />
     <Compile Include="Displays\CardDisplay.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="Deck.cs" />
