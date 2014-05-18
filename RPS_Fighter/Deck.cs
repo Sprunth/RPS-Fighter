@@ -23,27 +23,38 @@ namespace RPS_Fighter
             List<Card> grapple = new List<Card>();
             List<Card> block = new List<Card>();
 
-            for (int i = 0; i < 5;i++ )
+            for (int i = 0; i < 5*10;i++ )
                 attack.Add(new AttackCard(1, 1));
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 3*10; i++)
                 attack.Add(new AttackCard(2, 2));
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 2*10; i++)
                 attack.Add(new AttackCard(3, 4));
-            attack.Add(new AttackCard(5, 8));
+            for (int i = 0; i < 10; i++)
+            {
+                attack.Add(new AttackCard(5, 8));    
+            }
 
-            for (int i = 0; i < 5; i++)
+
+            for (int i = 0; i < 5 * 10; i++)
                 grapple.Add(new GrappleCard(1, 1));
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 3 * 10; i++)
                 grapple.Add(new GrappleCard(2, 2));
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 2 * 10; i++)
                 grapple.Add(new GrappleCard(3, 4));
-            grapple.Add(new GrappleCard(5, 8));
+            for (int i = 0; i < 10; i++)
+            {
+                grapple.Add(new GrappleCard(5, 8));
+            }
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 3*10; i++)
                 block.Add(new BlockCard(4));
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 3*10; i++)
                 block.Add(new BlockCard(5));
-            block.Add(new BlockCard(6));
+            for (int i = 0; i < 10; i++)
+            {
+                block.Add(new BlockCard(6));
+            }
+            
 
             for(int i=0;i<5;i++)
             {
