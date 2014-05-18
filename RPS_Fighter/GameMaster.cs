@@ -67,31 +67,31 @@ namespace RPS_Fighter
         public int Battle()
         {
             //check card strengths
-            if ((p1Card.cardType == CardType.Attack) && (p2Card.cardType == CardType.Block))
+            if ((p1Card.TypeOfCard == CardType.Attack) && (p2Card.TypeOfCard == CardType.Block))
                 return 1; //
-            else if ((p1Card.cardType == CardType.Block) && (p2Card.cardType == CardType.Grapple))
+            else if ((p1Card.TypeOfCard == CardType.Block) && (p2Card.TypeOfCard == CardType.Grapple))
             {
                 p2Card.ApplyEffect(Player1);
                 return 1;
             }
-            else if ((p1Card.cardType == CardType.Grapple) && (p2Card.cardType == CardType.Attack))
+            else if ((p1Card.TypeOfCard == CardType.Grapple) && (p2Card.TypeOfCard == CardType.Attack))
             {
                 p2Card.ApplyEffect(Player1);
                 return 1;
             }
-            else if ((p2Card.cardType == CardType.Attack) && (p1Card.cardType == CardType.Block))
+            else if ((p2Card.TypeOfCard == CardType.Attack) && (p1Card.TypeOfCard == CardType.Block))
                 return 0;
-            else if((p2Card.cardType == CardType.Block) && (p1Card.cardType == CardType.Grapple))
+            else if((p2Card.TypeOfCard == CardType.Block) && (p1Card.TypeOfCard == CardType.Grapple))
             {
                 p1Card.ApplyEffect(Player2);
                 return 0;
             }
-            else if((p2Card.cardType == CardType.Grapple) && (p1Card.cardType == CardType.Attack))
+            else if((p2Card.TypeOfCard == CardType.Grapple) && (p1Card.TypeOfCard == CardType.Attack))
             {
                 p1Card.ApplyEffect(Player2);
                 return 0;
             }
-            else if((p2Card.cardType == p1Card.cardType) &&(p1Card.cardType == CardType.Attack))
+            else if((p2Card.TypeOfCard == p1Card.TypeOfCard) &&(p1Card.TypeOfCard == CardType.Attack))
             {
                 if(p)
             }
