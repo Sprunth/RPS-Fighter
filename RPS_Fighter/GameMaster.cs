@@ -43,13 +43,23 @@ namespace RPS_Fighter
 
         public void UpdateGameState()
         {
-
+            switch(CurrentGameState)
+            {
+                case GameState.Battle:
+                    CurrentGameState = GameState.Combo;
+                    break;
+                case GameState.Reset:
+                    CurrentGameState = GameState.Player1Turn;
+                    break;
+            }
         }
 
         public Character GetOtherCharacter(Character c)
         {
             return (c == Player1) ? Player2 : Player1;
         }
+
+        //public 
     }
 
     public enum GameState { Player1Turn, Player2Turn, Battle, Combo, Reset }
