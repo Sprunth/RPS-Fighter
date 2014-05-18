@@ -21,6 +21,7 @@ namespace RPS_Fighter.Displays
         public BattleScreen()
         {
             slash = new Sprite(new Texture("Images/BattleScreen.png"));
+            slash.Scale = new Vector2f(1.4f, 1.4f);
             var versusTex = new Texture("Images/versus.png");
             versusTex.Smooth = true;
             versus = new Sprite(versusTex);
@@ -53,6 +54,11 @@ namespace RPS_Fighter.Displays
         {
             if (!AnimationDone)
             {
+                if (slash.Scale.X > 1 && slash.Scale.Y > 1)
+                {
+                    slash.Scale -= new Vector2f(0.03f, 0.03f);
+                }
+                else { slash.Scale = new Vector2f(1, 1); }
                 float speed = 7.6f;
                 if (p1Card.Position.X < p1Goal)
                 { p1Card.SetPosition(p1Card.Position + new Vector2f(speed, 0)); }

@@ -26,6 +26,7 @@ namespace RPS_Fighter.Displays
             tapClick = new Texture("Images/tapTick.png");
 
             cursor = new Sprite(tap);
+            cursor.Origin = new Vector2f(18, 18);
 
             stars = new List<Sprite>();
             star = new Texture("Images/starGold.png");
@@ -41,14 +42,14 @@ namespace RPS_Fighter.Displays
             { cursor.Texture = tap; }
 
             Sprite newStar = new Sprite(star);
-            newStar.Position = cursor.Position + new Vector2f(30,30);
+            newStar.Position = cursor.Position + new Vector2f(10,10);
             newStar.Scale = new Vector2f(0.6f, 0.6f);
             stars.Add(newStar);
 
             for (int i=0;i<stars.Count;i++)
             {
-                stars[i].Scale = new Vector2f(stars[i].Scale.X * 0.9f, stars[i].Scale.Y * 0.9f);
-                if (stars[i].Scale.X < 0.1f)
+                stars[i].Scale = new Vector2f(stars[i].Scale.X * 0.92f, stars[i].Scale.Y * 0.92f);
+                if (stars[i].Scale.X < 0.21f)
                     stars.RemoveAt(i);
             }
         }
