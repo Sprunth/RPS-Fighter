@@ -28,6 +28,7 @@ namespace RPS_Fighter
 
             HP = 30;
             MaxEnergy = 15;
+            CurEnergy = 15;
         }
 
         public void DrawCard()

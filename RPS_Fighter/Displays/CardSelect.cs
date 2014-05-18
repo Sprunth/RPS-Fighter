@@ -101,7 +101,7 @@ namespace RPS_Fighter.Displays
             mpBar.Position = new Vector2f(430, 40);
 
             hpLabel = new Text(GameMaster.ActiveGM.Player1HP.ToString(), Program.ActiveGame.font, 14);
-            mpLabel = new Text(GameMaster.ActiveGM.Player2HP.ToString(), Program.ActiveGame.font, 14);
+            mpLabel = new Text(GameMaster.ActiveGM.Player1MP.ToString(), Program.ActiveGame.font, 14);
             hpLabel.Position = hpBar.Position;
             mpLabel.Position = mpBar.Position;
             #endregion
@@ -116,7 +116,7 @@ namespace RPS_Fighter.Displays
             hpBar.Scale = new Vector2f(GameMaster.ActiveGM.Player1HP / 30f, 0.1f);
             mpBar.Scale = new Vector2f(GameMaster.ActiveGM.Player1MP / 15f, 0.1f);
             hpLabel = new Text(GameMaster.ActiveGM.Player1HP.ToString(), Program.ActiveGame.font, 14);
-            mpLabel = new Text(GameMaster.ActiveGM.Player2HP.ToString(), Program.ActiveGame.font, 14);
+            mpLabel = new Text(GameMaster.ActiveGM.Player1MP.ToString(), Program.ActiveGame.font, 14);
             hpLabel.Position = hpBar.Position;
             mpLabel.Position = mpBar.Position;
         }
