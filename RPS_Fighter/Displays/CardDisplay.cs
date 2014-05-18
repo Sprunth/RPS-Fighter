@@ -33,8 +33,8 @@ namespace RPS_Fighter.Displays
         public void UpdateInfo(Card c)
         {
             card = c;
-            strength = new Text(c.Strength.ToString(), font, 16);
-            energyCost = new Text(c.EnergyCost.ToString(), font, 16);
+            strength = new Text("STR: " + c.Strength.ToString(), font, 16);
+            energyCost = new Text("ENG: " + c.EnergyCost.ToString(), font, 16);
             cardTypeText = new Text(c.TypeOfCard.ToString(), font, 16);
 
             strength.Color = new Color(200, 200, 200);
@@ -82,8 +82,8 @@ namespace RPS_Fighter.Displays
         {
             spr.Position            = pos;
             centerImg.Position      = pos;
-            strength.Position       = spr.Position + new Vector2f(16, 134);
-            energyCost.Position     = spr.Position + new Vector2f(96, 134);
+            strength.Position       = spr.Position + new Vector2f(14, 134);
+            energyCost.Position     = spr.Position + new Vector2f(69, 134);
             cardTypeText.Position   = spr.Position + new Vector2f(12, 6);
         }
         public Vector2f Position { get { return spr.Position; } }
