@@ -90,13 +90,13 @@ namespace RPS_Fighter
                         {
                             case 0:
                                 Console.WriteLine("Player One wins this round");
-                                cs = new CardSelect(Player1);
                                 CurrentGameState = GameState.Combo;
+                                cs = new CardSelect(Player1);
                                 break;
                             case 1:
                                 Console.WriteLine("Player Two wins this round");
-                                cs = new CardSelect(Player2);
                                 CurrentGameState = GameState.Combo;
+                                cs = new CardSelect(Player2);
                                 break;
                             case 2:
                                 Console.WriteLine("Glancing blows! A fierce battle!");
@@ -118,13 +118,11 @@ namespace RPS_Fighter
                         {
                             Player1.DrawCard();
                             Player1.DrawCard();
-                            cs = new CardSelect(Player1);
                         }
                         if (BattleResult == 1 && Player2.HandCount <= 2)
                         {
                             Player2.DrawCard();
                             Player2.DrawCard();
-                            cs = new CardSelect(Player2);
                         }
                     }
                     else
@@ -191,6 +189,7 @@ namespace RPS_Fighter
                                 }
                                 item.getCard().ApplyEffect(Player2);
                                 Player1.PlayCardCombo(item.getCard());
+                                cs = new CardSelect(Player1);
                                 //CurrentGameState = GameState.Player2Turn;
                                 break;
                             }
@@ -219,6 +218,7 @@ namespace RPS_Fighter
                                 }
                                 item.getCard().ApplyEffect(Player1);
                                 Player2.PlayCardCombo(item.getCard());
+                                cs = new CardSelect(Player2);
                                 break;
                             }
                         }
