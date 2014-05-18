@@ -10,6 +10,7 @@ using SFML.Graphics;
 using SFML.Window;
 
 using RPS_Fighter.Displays;
+using System.Diagnostics;
 
 namespace RPS_Fighter
 {
@@ -24,6 +25,8 @@ namespace RPS_Fighter
         
         public RPSGame()
         {
+            Debug.Listeners.Add(new TextWriterTraceListener(Console.Out));
+
             WindowSize = new Vector2u(1200, 600);
             ContextSettings cs = new ContextSettings();
             cs.AntialiasingLevel = 8;

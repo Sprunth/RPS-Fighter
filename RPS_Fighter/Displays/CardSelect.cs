@@ -40,7 +40,7 @@ namespace RPS_Fighter.Displays
             deckCard = new Sprite(new Texture("Images/CardBack.png"));
             deckCard.Position = new Vector2f(windowSize.X - offset.X * 2, offset.Y);
             discard = new CardDisplay();
-            Card lastDiscardCard = character.Discard.GetLastCard();
+            lastDiscardCard = character.Discard.GetLastCard();
             if (lastDiscardCard != null)
             {
                 discard.UpdateInfo(lastDiscardCard);
