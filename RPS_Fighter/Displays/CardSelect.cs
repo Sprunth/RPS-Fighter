@@ -22,6 +22,8 @@ namespace RPS_Fighter.Displays
         Text deckLabel, discardLabel;
         Text gameStateStatus;
 
+        Sprite background;
+
         public CardSelect(Character character)
         {
             Vector2f offset = new Vector2f(80, 90);
@@ -84,6 +86,8 @@ namespace RPS_Fighter.Displays
             }
             gameStateStatus = new Text(gameStateString, Program.ActiveGame.font, 34);
             gameStateStatus.Position = new Vector2f(60, 20);
+
+            background = new Sprite(new Texture("Images/GameMat2.png"));
         }
 
         public void Update()
@@ -96,6 +100,8 @@ namespace RPS_Fighter.Displays
 
         public void Draw(RenderWindow window)
         {
+            window.Draw(background);
+
             foreach(CardDisplay cd in cards)
             {
                 window.Draw(cd);
@@ -107,6 +113,7 @@ namespace RPS_Fighter.Displays
             window.Draw(deckLabel);
             window.Draw(discardLabel);
             window.Draw(gameStateStatus);
+            
         }
     }
 }

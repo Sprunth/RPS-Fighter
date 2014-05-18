@@ -206,7 +206,6 @@ namespace RPS_Fighter
                         }
                         break;
                     }
-                    
             }
             
         }
