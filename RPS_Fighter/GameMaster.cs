@@ -27,6 +27,7 @@ namespace RPS_Fighter
         public int BattleResult { get; private set; }
 
         bool mouseClicked = false;
+        bool ComboFlag = false;
 
         public GameMaster()
         {
@@ -84,10 +85,12 @@ namespace RPS_Fighter
                         {
                             case 0:
                                 Console.WriteLine("Player One wins this round");
+                                cs = new CardSelect(Player1);
                                 CurrentGameState = GameState.Combo;
                                 break;
                             case 1:
                                 Console.WriteLine("Player Two wins this round");
+                                cs = new CardSelect(Player2);
                                 CurrentGameState = GameState.Combo;
                                 break;
                             case 2:
@@ -134,10 +137,36 @@ namespace RPS_Fighter
             
         }
 
-        //public void Combo()
-        //{
-        //    if(P)
-        //}
+        public void Combo(RenderWindow window)
+        {
+            Player2.Hand.SetLeastEnergyCard();
+            Player1.Hand.SetLeastEnergyCard();
+            switch (BattleResult)
+            {
+                case 0:
+                    if (Player1.CurEnergy < Player1.Hand.LeastEnergy)
+                    {
+                        ComboFlag = true; //stop comboing
+                    }
+                    else
+                    {
+                        foreach (var item in cs.cards)
+                        {
+                            int x = Mouse.GetPosition(window).X;
+                            int y = Mouse.GetPosition(window).Y;
+                            Vector2f temp = new Vector2f((float)(x), (float)(y));
+                            if (item.IsWithin(temp) && mouseClicked)
+                            {
+                                Console.WriteLine("Card chosen: " + item.getCard());
+                                mouseClicked = false;
+                                Player1.PlayCard(item.getCard());
+                                CurrentGameState = GameState.Player2Turn;
+                                break;
+                            }
+                        }
+                    }
+            }        
+        }
 
         public void Draw(RenderWindow window)
         {
@@ -148,6 +177,8 @@ namespace RPS_Fighter
                     { cs.Draw(window); break; }
                 case GameState.Battle:
                     { bs.Draw(window); break; }
+                case GameState.Combo:
+                    { cs.Draw(window); break; }
             }
         }
 
