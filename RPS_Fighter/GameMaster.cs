@@ -296,7 +296,10 @@ namespace RPS_Fighter
         {
             //check card strengths
             if ((P1Card.TypeOfCard == CardType.Attack) && (P2Card.TypeOfCard == CardType.Block))
-                return 3; //
+            {
+                Player2.HP += P2Card.Strength;
+                return 3; 
+            }
             else if ((P1Card.TypeOfCard == CardType.Block) && (P2Card.TypeOfCard == CardType.Grapple))
             {
                 P2Card.ApplyEffect(Player1);
@@ -310,7 +313,10 @@ namespace RPS_Fighter
                 return 1;
             }
             else if ((P2Card.TypeOfCard == CardType.Attack) && (P1Card.TypeOfCard == CardType.Block))
+            {
+                Player1.HP += P1Card.Strength;
                 return 3;
+            }
             else if((P2Card.TypeOfCard == CardType.Block) && (P1Card.TypeOfCard == CardType.Grapple))
             {
                 P1Card.ApplyEffect(Player2);
@@ -359,13 +365,18 @@ namespace RPS_Fighter
                     Player2.DecreaseEnergy(P2Card);
                     return 1;
                 }
-                else
-                {
-                    P1Card.ApplyEffect(Player2);
-                    P2Card.ApplyEffect(Player1);
-                    return 2;
+                //else
+                //{
+                //    P1Card.ApplyEffect(Player2);
+                //    P2Card.ApplyEffect(Player1);
+                //    return 2;
 
-                }
+                //}
+            }
+            else if ((P2Card.TypeOfCard == P1Card.TypeOfCard) && (P1Card.TypeOfCard == CardType.Block))
+            {
+                Player2.HP += (P2Card.Strength/2);
+                Player1.HP += (P1Card.Strength/2);
             }
             return 3;
         }
