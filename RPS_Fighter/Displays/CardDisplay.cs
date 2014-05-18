@@ -52,5 +52,17 @@ namespace RPS_Fighter.Displays
             target.Draw(energyCost);
             target.Draw(cardTypeText);
         }
+
+        public bool IsWithin(Vector2f vector)
+        {
+            if((vector.X >= rect.GetGlobalBounds().Left) && 
+                (vector.X <= rect.GetGlobalBounds().Left + rect.GetGlobalBounds().Width) &&
+                (vector.Y >= rect.GetGlobalBounds().Top) &&
+                (vector.Y <= rect.GetGlobalBounds().Top + rect.GetGlobalBounds().Height))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
