@@ -84,6 +84,10 @@ namespace RPS_Fighter
                             CurrentGameState = GameState.Combo;
                             break;
                         case 2:
+                            Console.WriteLine("Glancing blows! A fierce battle!");
+                            CurrentGameState = GameState.Reset;
+                            break;
+                        case 3:
                             Console.WriteLine("The fighters are frozen!");
                             CurrentGameState = GameState.Reset;
                             break;
@@ -241,7 +245,7 @@ namespace RPS_Fighter
 
                 }
             }
-            return 2;
+            return 3;
         }
         /// <summary>
         /// Resets player energies and checks health of players. If either is below zero, the other is the winner.
