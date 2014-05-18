@@ -33,8 +33,8 @@ namespace RPS_Fighter.Displays
 
             p1 = new Text("Player 1", Program.ActiveGame.font, 42);
             p2 = new Text("Player 2", Program.ActiveGame.font, 42);
-            p1.Position = new Vector2f(16, 8);
-            p2.Position = new Vector2f(Program.ActiveGame.WindowSize.X - 160, Program.ActiveGame.WindowSize.Y - 48);
+            p1.Position = new Vector2f(16, 4);
+            p2.Position = new Vector2f(Program.ActiveGame.WindowSize.X - 160, Program.ActiveGame.WindowSize.Y - 56);
         }
 
         public void Initialize()
@@ -43,7 +43,7 @@ namespace RPS_Fighter.Displays
             p2Card = new CardDisplay();
             p1Card.UpdateInfo(GameMaster.ActiveGM.P1Card);
             p2Card.UpdateInfo(GameMaster.ActiveGM.P2Card);
-            p1Card.SetPosition(new Vector2f(-100, 40));
+            p1Card.SetPosition(new Vector2f(-100, 60));
             p2Card.SetPosition(new Vector2f(Program.ActiveGame.WindowSize.X, Program.ActiveGame.WindowSize.Y - 80*3));
             p1Goal = 190;
             p2Goal = Program.ActiveGame.WindowSize.X - 310;
