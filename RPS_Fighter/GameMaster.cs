@@ -114,7 +114,31 @@ namespace RPS_Fighter
                     }
                     break;
                 case GameState.Combo:
-                    if (BattleResult == 0 && P1Card.TypeOfCard == CardType.Grapple)
+                    if (!ComboFlag && BattleResult == 0 && P1Card.TypeOfCard != CardType.Grapple)
+                    {
+                        Combo(Program.ActiveGame.RPSWindow);
+                    }
+                    else if (!ComboFlag && BattleResult == 1 && P2Card.TypeOfCard != CardType.Grapple)
+                    {
+                        Combo(Program.ActiveGame.RPSWindow);
+                    }
+
+                    else if (ComboFlag)
+                    {
+                        CurrentGameState = GameState.Reset;
+                        ComboFlag = false;
+                        if (BattleResult == 0 && Player1.HandCount <= 2)
+                        {
+                            Player1.DrawCard();
+                            Player1.DrawCard();
+                        }
+                        if (BattleResult == 1 && Player2.HandCount <= 2)
+                        {
+                            Player2.DrawCard();
+                            Player2.DrawCard();
+                        }
+                    }
+                    else if (BattleResult == 0 && P1Card.TypeOfCard == CardType.Grapple)
                     {
                         foreach (var item in cs.cards)
                         {
@@ -148,25 +172,6 @@ namespace RPS_Fighter
                             }
                         }
                     }
-                    else if (ComboFlag)
-                    {
-                        CurrentGameState = GameState.Reset;
-                        ComboFlag = false;
-                        if (BattleResult == 0 && Player1.HandCount <= 2)
-                        {
-                            Player1.DrawCard();
-                            Player1.DrawCard();
-                        }
-                        if (BattleResult == 1 && Player2.HandCount <= 2)
-                        {
-                            Player2.DrawCard();
-                            Player2.DrawCard();
-                        }
-                    }
-                    else
-                    {
-                        Combo(Program.ActiveGame.RPSWindow);
-                    }
                     
                     break;
                 case GameState.Reset:
@@ -176,18 +181,18 @@ namespace RPS_Fighter
                         {
                             case 0:
                                 Debug.WriteLine("Player One is victorious! *fanfare*");
-                                Player1.HP = 15;
-                                Player2.HP = 15;
+                                Player1.HP = 30;
+                                Player2.HP = 30;
                                 break;
                             case 1:
                                 Debug.WriteLine("Player Two has crushed the opposition! *hooray*");
-                                Player2.HP = 15;
-                                Player1.HP = 15;
+                                Player2.HP = 30;
+                                Player1.HP = 30;
                                 break;
                             case 2:
                                 Debug.WriteLine("In war, there are no winners. *solemn music*");
-                                Player1.HP = 15;
-                                Player2.HP = 15;
+                                Player1.HP = 30;
+                                Player2.HP = 30;
                                 break;
                             case 3:
                                 Debug.WriteLine("The battle continues! *Intense music*");
