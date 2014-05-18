@@ -74,8 +74,10 @@ namespace RPS_Fighter
                     break;
                 case GameState.Battle:
                     bs.Update();
-                    if (bs.AnimationDone)
+                    if (bs.AnimationDone && mouseClicked)
                     {
+                        mouseClicked = false;
+                        bs.AnimationDone = false;
                         int BattleResult = Battle();
                         switch (BattleResult)
                         {
@@ -181,6 +183,7 @@ namespace RPS_Fighter
                     mouseClicked = false;
                     SetPlayingCard(item.getCard(), Player2);
                     CurrentGameState = GameState.Battle;
+                    bs.Initialize();
                     break;
                 }
             }

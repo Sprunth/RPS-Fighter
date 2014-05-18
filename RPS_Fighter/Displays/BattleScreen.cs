@@ -12,10 +12,10 @@ namespace RPS_Fighter.Displays
     {
         Sprite slash, versus;
 
-        public bool AnimationDone { get; private set; }
+        public bool AnimationDone { get; set; }
 
         CardDisplay p1Card, p2Card;
-        float p1yGoal, p2yGoal;
+        float p1Goal, p2Goal;
 
         public BattleScreen()
         {
@@ -30,22 +30,34 @@ namespace RPS_Fighter.Displays
 
             AnimationDone = false;
 
+            
+        }
+
+        public void Initialize()
+        {
             p1Card = new CardDisplay();
             p2Card = new CardDisplay();
             p1Card.UpdateInfo(GameMaster.ActiveGM.P1Card);
             p2Card.UpdateInfo(GameMaster.ActiveGM.P2Card);
-            p1Card.SetPosition(new Vector2f(-100, 80));
-            p2Card.SetPosition(new Vector2f(Program.ActiveGame.WindowSize.X+100, Program.ActiveGame.WindowSize.Y-80));
-            p1yGoal = 100;
-            p2yGoal = Program.ActiveGame.WindowSize.X - 100;
+            p1Card.SetPosition(new Vector2f(-100, 40));
+            p2Card.SetPosition(new Vector2f(Program.ActiveGame.WindowSize.X, Program.ActiveGame.WindowSize.Y - 80*3));
+            p1Goal = 190;
+            p2Goal = Program.ActiveGame.WindowSize.X - 310;
         }
 
         public void Update()
         {
             if (!AnimationDone)
             {
-                p1Card.SetPosition(p1Card.Position + new Vector2f(1, 0));
-                p2Card.SetPosition(p2Card.Position + new Vector2f(-1, 0));
+                float speed = 7.6f;
+                if (p1Card.Position.X < p1Goal)
+                { p1Card.SetPosition(p1Card.Position + new Vector2f(speed, 0)); }
+
+                if (p2Card.Position.X > p2Goal)
+                { p2Card.SetPosition(p2Card.Position + new Vector2f(-speed, 0)); }
+
+                if (p1Card.Position.X > p1Goal && p2Card.Position.X < p2Goal)
+                { AnimationDone = true; }
             }
         }
 
