@@ -68,6 +68,7 @@ namespace RPS_Fighter
                     Player1Turn(Program.ActiveGame.RPSWindow);
                     break;
                 case GameState.Player2Turn:
+                    cs = new CardSelect(Player2.Hand);
                     Player2Turn(Program.ActiveGame.RPSWindow);
                     break;
                 case GameState.Battle:
