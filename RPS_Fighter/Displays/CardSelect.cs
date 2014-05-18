@@ -53,7 +53,7 @@ namespace RPS_Fighter.Displays
             deckLabel = new Text("Deck", Program.ActiveGame.font, 28);
             discardLabel = new Text("Discard", Program.ActiveGame.font, 28);
             deckLabel.Position = new Vector2f(Program.ActiveGame.WindowSize.X - 160, 40);
-            discardLabel.Position = new Vector2f(Program.ActiveGame.WindowSize.X - 160, Program.ActiveGame.WindowSize.Y - 150);
+            discardLabel.Position = new Vector2f(Program.ActiveGame.WindowSize.X - 160, Program.ActiveGame.WindowSize.Y - 130);
 
             string gameStateString = "";
             switch(GameMaster.ActiveGM.CurrentGameState)
