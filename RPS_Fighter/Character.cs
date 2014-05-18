@@ -45,5 +45,7 @@ namespace RPS_Fighter
         {
             CDeck.PrintDeck();
         }
+
+        public int HandCount { get { return Hand.Count; } }
     }
 }

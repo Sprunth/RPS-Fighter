@@ -17,6 +17,7 @@ namespace RPS_Fighter.Displays
 
         Sprite deckCard;
         CardDisplay discard;
+        Card lastDiscardCard;
 
         public CardSelect(Character character)
         {
@@ -26,10 +27,11 @@ namespace RPS_Fighter.Displays
                 float height = windowSize.Y / 3;
 
             // 6 cards in hand max
-            for (int i=0;i<6;i++)
+            int handCount = (character.Hand.Count > 6) ? 6 : character.Hand.Count;
+            for (int i = 0; i < handCount; i++)
             {
                 CardDisplay cd = new CardDisplay();
-                cd.UpdateInfo(character.CDeck.GetCardOfIndex(i));
+                cd.UpdateInfo(character.Hand.GetCardOfIndex(i));
                 cd.SetPosition(
                     new Vector2f(offset.X + width * ((i % 3)), offset.Y + height * ((i % 2)))
                     );
@@ -38,8 +40,13 @@ namespace RPS_Fighter.Displays
             deckCard = new Sprite(new Texture("Images/CardBack.png"));
             deckCard.Position = new Vector2f(windowSize.X - offset.X * 2, offset.Y);
             discard = new CardDisplay();
-            discard.UpdateInfo(character.Discard.GetLastCard());
-            discard.SetPosition(deckCard.Position + new Vector2f(0, height));
+            Card lastDiscardCard = character.Discard.GetLastCard();
+            if (lastDiscardCard != null)
+            {
+                discard.UpdateInfo(lastDiscardCard);
+                discard.SetPosition(deckCard.Position + new Vector2f(0, height));
+            }
+            
         }
 
         public void Draw(RenderWindow window)
@@ -49,7 +56,8 @@ namespace RPS_Fighter.Displays
                 window.Draw(cd);
             }
             window.Draw(deckCard);
-            window.Draw(discard);
+            if (lastDiscardCard != null)
+            { window.Draw(discard); }
         }
     }
 }
