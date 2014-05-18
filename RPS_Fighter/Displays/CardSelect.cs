@@ -24,6 +24,8 @@ namespace RPS_Fighter.Displays
 
         Sprite background;
 
+        Sprite hpBar, mpBar;
+
         public CardSelect(Character character)
         {
             Vector2f offset = new Vector2f(80, 90);
@@ -88,6 +90,14 @@ namespace RPS_Fighter.Displays
             gameStateStatus.Position = new Vector2f(60, 20);
 
             background = new Sprite(new Texture("Images/GameMat2.png"));
+
+            hpBar = new Sprite(new Texture("Images/HPBar.png"));
+            mpBar = new Sprite(new Texture("Images/MPBar.png"));
+            hpBar.Scale = new Vector2f(1f, 0.1f);
+            mpBar.Scale = new Vector2f(1f, 0.1f);
+            hpBar.Position = new Vector2f(430, 20);
+            mpBar.Position = new Vector2f(430, 40);
+            
         }
 
         public void Update()
@@ -96,6 +106,8 @@ namespace RPS_Fighter.Displays
             {
                 disp.Update();
             }
+            hpBar.Scale = new Vector2f(GameMaster.ActiveGM.Player1HP / 30f, 0.1f);
+            mpBar.Scale = new Vector2f(GameMaster.ActiveGM.Player1MP / GameMaster.ActiveGM.Player1MPMax, 0.1f);
         }
 
         public void Draw(RenderWindow window)
@@ -113,6 +125,9 @@ namespace RPS_Fighter.Displays
             window.Draw(deckLabel);
             window.Draw(discardLabel);
             window.Draw(gameStateStatus);
+
+            window.Draw(hpBar);
+            window.Draw(mpBar);
             
         }
     }

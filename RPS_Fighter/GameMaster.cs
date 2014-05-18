@@ -294,6 +294,13 @@ namespace RPS_Fighter
             }
         }
 
+        public int Player1HP { get { return Player1.HP; } }
+        public int Player2HP { get { return Player2.HP; } }
+        public int Player1MP { get { return Player1.CurEnergy; } }
+        public int Player2MP { get { return Player2.CurEnergy; } }
+        public int Player1MPMax { get { return Player1.MaxEnergy; } }
+        public int Player2MPMax { get { return Player2.MaxEnergy; } }
+
         public Character GetOtherCharacter(Character c)
         {
             return (c == Player1) ? Player2 : Player1;
