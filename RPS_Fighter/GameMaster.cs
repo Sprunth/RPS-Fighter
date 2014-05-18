@@ -68,6 +68,8 @@ namespace RPS_Fighter
                     Player1Turn(Program.ActiveGame.RPSWindow);
                     break;
                 case GameState.Player2Turn:
+                    cs = new CardSelect(Player2.Hand);
+                    Player2Turn(Program.ActiveGame.RPSWindow);
                     break;
                 case GameState.Battle:
                     CurrentGameState = GameState.Combo;
@@ -104,6 +106,25 @@ namespace RPS_Fighter
                     mouseClicked = false;
                     SetPlayingCard(item.getCard(), Player1);
                     CurrentGameState = GameState.Player2Turn;
+                    break;
+                }
+            }
+        }
+
+        public void Player2Turn(RenderWindow window)
+        {
+            //Console.WriteLine("Stuff");
+            foreach (var item in cs.cards)
+            {
+                int x = Mouse.GetPosition(window).X;
+                int y = Mouse.GetPosition(window).Y;
+                Vector2f temp = new Vector2f((float)(x), (float)(y));
+                if (item.IsWithin(temp) && mouseClicked)
+                {
+                    Console.WriteLine("Card chosen: " + item.getCard());
+                    mouseClicked = false;
+                    SetPlayingCard(item.getCard(), Player2);
+                    CurrentGameState = GameState.Battle;
                     break;
                 }
             }
