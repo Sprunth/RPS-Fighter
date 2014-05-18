@@ -21,7 +21,7 @@ namespace RPS_Fighter
             CDeck = initialDeck;
             Hand = new Deck();
             Discard = new Deck();
-            for(int i=0;i<6;i++)
+            for (int i = 0; i < 6; i++)
             {
                 DrawCard();
             }
@@ -43,7 +43,7 @@ namespace RPS_Fighter
             Character enemy = GameMaster.ActiveGM.GetOtherCharacter(this);
             Program.ActiveGame.GM.SetPlayingCard(c, this);
             Discard.AddCard(c);
-            if(CDeck.Count == 0)
+            if (CDeck.Count == 0)
             {
                 CDeck = Discard;
                 Discard = new Deck();

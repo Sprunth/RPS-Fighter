@@ -22,7 +22,7 @@ namespace RPS_Fighter
         public Vector2u WindowSize { get; set; }
 
         Cursor cursor;
-        
+
         public RPSGame()
         {
             Debug.Listeners.Add(new TextWriterTraceListener(Console.Out));
@@ -41,12 +41,12 @@ namespace RPS_Fighter
             font = new Font("Fonts/cambria.ttc");
             GM = new GameMaster();
             GM.Initialize();
-            cursor = new Cursor();   
+            cursor = new Cursor();
         }
 
         public void Run()
         {
-            while(RPSWindow.IsOpen())
+            while (RPSWindow.IsOpen())
             {
                 Update();
                 Draw();
@@ -68,7 +68,7 @@ namespace RPS_Fighter
 
         private void Draw()
         {
-            RPSWindow.Clear(new Color(20,30,40));
+            RPSWindow.Clear(new Color(20, 30, 40));
 
             GM.Draw(RPSWindow);
 
