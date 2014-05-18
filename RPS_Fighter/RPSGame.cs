@@ -9,63 +9,71 @@ using SFML.Audio;
 using SFML.Graphics;
 using SFML.Window;
 
+using RPS_Fighter.Displays;
+
 namespace RPS_Fighter
 {
     class RPSGame
     {
-        RenderWindow window;
+        public RenderWindow RPSWindow;
         public GameMaster GM { get; set; }
         public Font font { get; set; }
         public Vector2u WindowSize { get; set; }
 
+        Cursor cursor;
+        
         public RPSGame()
         {
             WindowSize = new Vector2u(1200, 600);
             ContextSettings cs = new ContextSettings();
             cs.AntialiasingLevel = 8;
-            window = new RenderWindow(new VideoMode(WindowSize.X, WindowSize.Y),"RPS Fighter", Styles.Titlebar | Styles.Close, cs);
-            window.Closed += window_Closed;
-            window.SetFramerateLimit(60);
+            RPSWindow = new RenderWindow(new VideoMode(WindowSize.X, WindowSize.Y),"RPS Fighter", Styles.Titlebar | Styles.Close, cs);
+            RPSWindow.Closed += window_Closed;
+            RPSWindow.SetFramerateLimit(60);
         }
 
         public void Initialize()
         {
             font = new Font("Fonts/cambria.ttc");
             GM = new GameMaster();
-            
+            cursor = new Cursor();   
         }
 
         public void Run()
         {
-            while(window.IsOpen())
+            while(RPSWindow.IsOpen())
             {
                 Update();
                 Draw();
             }
-            window.Dispose();
+            RPSWindow.Dispose();
         }
 
         private void Update()
         {
-            window.DispatchEvents();
+            RPSWindow.DispatchEvents();
 
             if (Keyboard.IsKeyPressed(Keyboard.Key.Escape))
-            { window.Close(); }
+            { RPSWindow.Close(); }
+
+            cursor.Update();
         }
 
         private void Draw()
         {
-            window.Clear(new Color(20,30,40));
+            RPSWindow.Clear(new Color(20,30,40));
             //draw
 
-            GM.Draw(window);
+            GM.Draw(RPSWindow);
 
-            window.Display();
+            cursor.Draw(RPSWindow);
+
+            RPSWindow.Display();
         }
 
         void window_Closed(object sender, EventArgs e)
         {
-            window.Close();
+            RPSWindow.Close();
         }
     }
 }

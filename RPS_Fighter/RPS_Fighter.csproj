@@ -80,6 +80,7 @@
     <Compile Include="Character.cs" />
     <Compile Include="Deck.cs" />
     <Compile Include="Displays\CardSelect.cs" />
+    <Compile Include="Displays\Cursor.cs" />
     <Compile Include="GameMaster.cs" />
     <Compile Include="GrappleCard.cs" />
     <Compile Include="Program.cs" />
@@ -124,6 +125,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\GrappleFrontTemplate.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\tap.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\tapTick.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="libsndfile-1.dll">
