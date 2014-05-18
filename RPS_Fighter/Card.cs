@@ -8,9 +8,9 @@ namespace RPS_Fighter
 {
     class Card
     {
-        protected int strength;
-        protected int energyCost;
-        protected CardType cardType;
+        public int Strength;
+        public int EnergyCost;
+        public CardType TypeOfCard;
 
         public Card()
         {
@@ -24,7 +24,7 @@ namespace RPS_Fighter
 
         public override string ToString()
         {
-            return "Card with STR: " + strength + " EnergyCost: " + energyCost + " Type: " + cardType;
+            return "Card with STR: " + Strength + " EnergyCost: " + EnergyCost + " Type: " + TypeOfCard;
         }
     }
 

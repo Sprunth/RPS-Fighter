@@ -10,9 +10,9 @@ namespace RPS_Fighter
     {
         public BlockCard(int strength) : base()
         {
-            this.strength = strength;
-            energyCost = 0;
-            cardType = CardType.Block;
+            this.Strength = strength;
+            EnergyCost = 0;
+            TypeOfCard = CardType.Block;
         }
 
     }

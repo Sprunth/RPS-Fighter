@@ -15,7 +15,7 @@ namespace RPS_Fighter
     {
         RenderWindow window;
         public GameMaster GM { get; set; }
-        Font font;
+        public Font font { get; set; }
 
         public RPSGame()
         {
