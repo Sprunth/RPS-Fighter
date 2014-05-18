@@ -188,6 +188,7 @@ namespace RPS_Fighter
                                     ComboFlag = true; //stop comboing
                                 }
                                 item.getCard().ApplyEffect(Player2);
+                                Player1.DecreaseEnergy(item.getCard());
                                 Player1.PlayCardCombo(item.getCard());
                                 //CurrentGameState = GameState.Player2Turn;
                                 break;
@@ -216,6 +217,7 @@ namespace RPS_Fighter
                                     ComboFlag = true; //stop comboing
                                 }
                                 item.getCard().ApplyEffect(Player1);
+                                Player2.DecreaseEnergy(item.getCard());
                                 Player2.PlayCardCombo(item.getCard());
                                 break;
                             }
