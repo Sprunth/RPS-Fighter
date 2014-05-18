@@ -26,7 +26,8 @@ namespace RPS_Fighter
                 DrawCard();
             }
 
-            HP = 15;
+            HP = 30;
+            MaxEnergy = 15;
         }
 
         public void DrawCard()
@@ -41,6 +42,7 @@ namespace RPS_Fighter
             Character enemy = GameMaster.ActiveGM.GetOtherCharacter(this);
             Program.ActiveGame.GM.SetPlayingCard(c, this);
             Discard.AddCard(c);
+            DrawCard();
         }
 
         public void PrintDeck()

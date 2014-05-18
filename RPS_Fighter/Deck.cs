@@ -81,6 +81,12 @@ namespace RPS_Fighter
             return c;
         }
 
+        //public Card Draw(Card c)
+        //{
+        //    cards.Remove(c);
+        //    return c;
+        //}
+
         public void RemoveCard(Card c)
         {
             cards.Remove(c);

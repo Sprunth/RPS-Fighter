@@ -162,7 +162,7 @@ namespace RPS_Fighter
                 {
                     Console.WriteLine("Card chosen: " + item.getCard());
                     mouseClicked = false;
-                    SetPlayingCard(item.getCard(), Player1);
+                    Player1.PlayCard(item.getCard());
                     CurrentGameState = GameState.Player2Turn;
                     break;
                 }
@@ -181,7 +181,7 @@ namespace RPS_Fighter
                 {
                     Console.WriteLine("Card chosen: " + item.getCard());
                     mouseClicked = false;
-                    SetPlayingCard(item.getCard(), Player2);
+                    Player2.PlayCard(item.getCard());
                     CurrentGameState = GameState.Battle;
                     bs.Initialize();
                     break;
