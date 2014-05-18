@@ -51,6 +51,11 @@ namespace RPS_Fighter
             DrawCard();
         }
 
+        public void DecreaseEnergy(Card c)
+        {
+            CurEnergy -= c.EnergyCost;
+        }
+
         public void PrintDeck()
         {
             CDeck.PrintDeck();

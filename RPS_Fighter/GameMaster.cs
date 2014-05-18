@@ -134,6 +134,11 @@ namespace RPS_Fighter
             
         }
 
+        //public void Combo()
+        //{
+        //    if(P)
+        //}
+
         public void Draw(RenderWindow window)
         {
             switch(CurrentGameState)
@@ -203,11 +208,13 @@ namespace RPS_Fighter
             else if ((P1Card.TypeOfCard == CardType.Block) && (P2Card.TypeOfCard == CardType.Grapple))
             {
                 P2Card.ApplyEffect(Player1);
+                Player2.DecreaseEnergy(P2Card);
                 return 1;
             }
             else if ((P1Card.TypeOfCard == CardType.Grapple) && (P2Card.TypeOfCard == CardType.Attack))
             {
                 P2Card.ApplyEffect(Player1);
+                Player2.DecreaseEnergy(P2Card);
                 return 1;
             }
             else if ((P2Card.TypeOfCard == CardType.Attack) && (P1Card.TypeOfCard == CardType.Block))
@@ -215,11 +222,13 @@ namespace RPS_Fighter
             else if((P2Card.TypeOfCard == CardType.Block) && (P1Card.TypeOfCard == CardType.Grapple))
             {
                 P1Card.ApplyEffect(Player2);
+                Player1.DecreaseEnergy(P1Card);
                 return 0;
             }
             else if((P2Card.TypeOfCard == CardType.Grapple) && (P1Card.TypeOfCard == CardType.Attack))
             {
                 P1Card.ApplyEffect(Player2);
+                Player1.DecreaseEnergy(P1Card);
                 return 0;
             }
             else if((P2Card.TypeOfCard == P1Card.TypeOfCard) && (P1Card.TypeOfCard == CardType.Attack))
@@ -227,11 +236,13 @@ namespace RPS_Fighter
                 if(P1Card.Strength>P2Card.Strength)
                 {
                     P1Card.ApplyEffect(Player2);
+                    Player1.DecreaseEnergy(P1Card);
                     return 0;
                 }
                 else if(P2Card.Strength>P1Card.Strength)
                 {
                     P2Card.ApplyEffect(Player1);
+                    Player2.DecreaseEnergy(P2Card);
                     return 1;
                 }
                 else
@@ -247,11 +258,13 @@ namespace RPS_Fighter
                 if (P1Card.Strength > P2Card.Strength)
                 {
                     P1Card.ApplyEffect(Player2);
+                    Player1.DecreaseEnergy(P1Card);
                     return 0;
                 }
                 else if (P2Card.Strength > P1Card.Strength)
                 {
                     P2Card.ApplyEffect(Player1);
+                    Player2.DecreaseEnergy(P2Card);
                     return 1;
                 }
                 else
