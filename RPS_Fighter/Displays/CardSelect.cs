@@ -19,6 +19,8 @@ namespace RPS_Fighter.Displays
         CardDisplay discard;
         Card lastDiscardCard;
 
+        Text deckLabel, discardLabel;
+
         public CardSelect(Character character)
         {
             Vector2f offset = new Vector2f(80, 90);
@@ -46,7 +48,11 @@ namespace RPS_Fighter.Displays
                 discard.UpdateInfo(lastDiscardCard);
                 discard.SetPosition(deckCard.Position + new Vector2f(0, height));
             }
-            
+
+            deckLabel = new Text("Deck", Program.ActiveGame.font, 28);
+            discardLabel = new Text("Discard", Program.ActiveGame.font, 28);
+            deckLabel.Position = new Vector2f(Program.ActiveGame.WindowSize.X - 160, 40);
+            discardLabel.Position = new Vector2f(Program.ActiveGame.WindowSize.X - 160, Program.ActiveGame.WindowSize.Y - 150);
         }
 
         public void Draw(RenderWindow window)
@@ -58,6 +64,9 @@ namespace RPS_Fighter.Displays
             window.Draw(deckCard);
             if (lastDiscardCard != null)
             { window.Draw(discard); }
+
+            window.Draw(deckLabel);
+            window.Draw(discardLabel);
         }
     }
 }
