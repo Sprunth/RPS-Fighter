@@ -21,7 +21,7 @@ namespace RPS_Fighter.Displays
             for (int i=0;i<6;i++)
             {
                 CardDisplay cd = new CardDisplay();
-                cd.UpdateText(deck.GetCardOfIndex(i));
+                cd.UpdateInfo(deck.GetCardOfIndex(i));
                 Vector2u windowSize = Program.ActiveGame.WindowSize;
                 float width = windowSize.X / 4;
                 float height = windowSize.Y / 3;
