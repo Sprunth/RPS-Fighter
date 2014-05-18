@@ -15,8 +15,12 @@ namespace RPS_Fighter.Displays
     {
         public List<CardDisplay> cards = new List<CardDisplay>();
 
+        Sprite deckCard;
+
         public CardSelect(Deck deck)
         {
+            Vector2f offset = new Vector2f(80, 90);
+
             // 6 cards in hand max
             for (int i=0;i<6;i++)
             {
@@ -26,12 +30,14 @@ namespace RPS_Fighter.Displays
                 float width = (windowSize.X * (2/3.0f))/4.0f;
                 float height = windowSize.Y / 3;
 
-                Vector2f offset = new Vector2f(80, 90);
+                
                 cd.SetPosition(
                     new Vector2f(offset.X + width * ((i % 3)), offset.Y + height * ((i % 2)))
                     );
                 cards.Add(cd);
             }
+            deckCard = new Sprite(new Texture("Images/CardBack.png"));
+            deckCard.Position = new Vector2f(Program.ActiveGame.WindowSize.X - offset.X * 2, offset.Y);
         }
 
         public void Draw(RenderWindow window)
@@ -40,6 +46,7 @@ namespace RPS_Fighter.Displays
             {
                 window.Draw(cd);
             }
+            window.Draw(deckCard);
         }
     }
 }
