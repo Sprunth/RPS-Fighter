@@ -26,11 +26,11 @@ namespace RPS_Fighter.Displays
                     winnerText.Position = new Vector2f(Program.ActiveGame.WindowSize.X-750, 260);
                     break;
                 case 1:
-                    winnerText = new Text("Player 2 wins!", Program.ActiveGame.font, 36);
+                    winnerText = new Text("Player 2 wins!", Program.ActiveGame.font, 50);
                     winnerText.Position = new Vector2f(Program.ActiveGame.WindowSize.X - 750, 260);
                     break;
                 case 2:
-                    winnerText = new Text("No one wins!", Program.ActiveGame.font, 36);
+                    winnerText = new Text("No one wins!", Program.ActiveGame.font, 50);
                     winnerText.Position = new Vector2f(Program.ActiveGame.WindowSize.X - 760, 260);
                     break;
             }
