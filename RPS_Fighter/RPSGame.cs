@@ -15,12 +15,13 @@ namespace RPS_Fighter
     {
         RenderWindow window;
         public GameMaster GM { get; set; }
+        Font font;
 
         public RPSGame()
         {
             ContextSettings cs = new ContextSettings();
             cs.AntialiasingLevel = 8;
-            window = new RenderWindow(new VideoMode(1200,900),"RPS Fighter", Styles.Default, cs);
+            window = new RenderWindow(new VideoMode(1200,600),"RPS Fighter", Styles.Default, cs);
             window.Closed += window_Closed;
             window.SetFramerateLimit(60);
         }
@@ -28,7 +29,7 @@ namespace RPS_Fighter
         public void Initialize()
         {
             GM = new GameMaster();
-
+            font = new Font("SegoeWP.ttf");
             
         }
 
@@ -51,6 +52,8 @@ namespace RPS_Fighter
         {
             window.Clear();
             //draw
+            Text t = new Text("Hello World", font, 18);
+            window.Draw(t);
             window.Display();
         }
 
