@@ -25,7 +25,10 @@ namespace RPS_Fighter.Displays
                 Vector2u windowSize = Program.ActiveGame.WindowSize;
                 float width = windowSize.X / 4;
                 float height = windowSize.Y / 3;
-                cd.SetPosition(new Vector2f(width * (i % 3), height * (i % 2)));
+                cd.SetPosition(
+                    new Vector2f(width * ((i % 3)+1), height * ((i % 2)+0.2f))
+                    );
+                cards.Add(cd);
             }
         }
 

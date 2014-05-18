@@ -26,9 +26,9 @@ namespace RPS_Fighter.Displays
 
         public void UpdateText(Card c)
         {
-            strength = new Text(c.Strength.ToString(), font);
-            energyCost = new Text(c.EnergyCost.ToString(), font);
-            cardTypeText = new Text(c.TypeOfCard.ToString(), font);
+            strength = new Text(c.Strength.ToString(), font, 18);
+            energyCost = new Text(c.EnergyCost.ToString(), font, 18);
+            cardTypeText = new Text(c.TypeOfCard.ToString(), font, 18);
 
             
         }
@@ -37,9 +37,12 @@ namespace RPS_Fighter.Displays
         {
             rect = new RectangleShape(new Vector2f(128, 160));
             rect.Position = pos;
-            strength.Position = rect.Position + new Vector2f(-64, -60);
-            energyCost.Position = rect.Position + new Vector2f(64, 60);
-            cardTypeText.Position = rect.Position += new Vector2f(-64, 60);
+            rect.FillColor = new Color(110,100,90);
+            rect.OutlineColor = new Color(24, 24, 24);
+            rect.OutlineThickness = 2;
+            strength.Position       = rect.Position + new Vector2f(8, 100);
+            energyCost.Position     = rect.Position + new Vector2f(96, 100);
+            cardTypeText.Position   = rect.Position + new Vector2f(2, 8);
         }
 
         public void Draw(RenderTarget target, RenderStates states)
