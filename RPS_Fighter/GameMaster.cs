@@ -73,10 +73,10 @@ namespace RPS_Fighter
             return (c == Player1) ? Player2 : Player1;
         }
 
-        public void Player1Turn()
+        /*public void Player1Turn()
         {
             if(Mou)
-        }
+        }*/
         /// <summary>
         /// Takes two cards and checks their types and values against each other. If one is superior to the other,
         /// then apply the superior card's effect to the inferior card's player, and declare the superior card's player
