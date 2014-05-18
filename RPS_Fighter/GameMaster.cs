@@ -111,6 +111,40 @@ namespace RPS_Fighter
                     }
                     break;
                 case GameState.Combo:
+                    if (BattleResult == 0 && P1Card.TypeOfCard == CardType.Grapple)
+                    {
+                        foreach (var item in cs.cards)
+                        {
+                            int x = Mouse.GetPosition(Program.ActiveGame.RPSWindow).X;
+                            int y = Mouse.GetPosition(Program.ActiveGame.RPSWindow).Y;
+                            Vector2f temp = new Vector2f((float)(x), (float)(y));
+                            if (item.IsWithin(temp) && mouseClicked)
+                            {
+                                Debug.WriteLine("Card chosen: " + item.getCard());
+                                mouseClicked = false;
+                                Player1.PlayCard(item.getCard());
+                                CurrentGameState = GameState.Reset;
+                                break;
+                            }
+                        }
+                    }
+                    if (BattleResult == 1 && P2Card.TypeOfCard == CardType.Grapple)
+                    {
+                        foreach (var item in cs.cards)
+                        {
+                            int x = Mouse.GetPosition(Program.ActiveGame.RPSWindow).X;
+                            int y = Mouse.GetPosition(Program.ActiveGame.RPSWindow).Y;
+                            Vector2f temp = new Vector2f((float)(x), (float)(y));
+                            if (item.IsWithin(temp) && mouseClicked)
+                            {
+                                Debug.WriteLine("Card chosen: " + item.getCard());
+                                mouseClicked = false;
+                                Player2.PlayCard(item.getCard());
+                                CurrentGameState = GameState.Reset;
+                                break;
+                            }
+                        }
+                    }
                     if (ComboFlag)
                     {
                         CurrentGameState = GameState.Reset;
