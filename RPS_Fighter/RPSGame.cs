@@ -46,6 +46,9 @@ namespace RPS_Fighter
         private void Update()
         {
             window.DispatchEvents();
+
+            if (Keyboard.IsKeyPressed(Keyboard.Key.Escape))
+            { window.Close(); }
         }
 
         private void Draw()
@@ -53,6 +56,7 @@ namespace RPS_Fighter
             window.Clear();
             //draw
             Text t = new Text("Hello World", font, 18);
+            t.Position = new Vector2f(20, 30);
             window.Draw(t);
             window.Display();
         }
