@@ -24,8 +24,8 @@ namespace RPS_Fighter.Displays
 
         Sprite background;
 
-        Sprite hpBar, mpBar;
-        Text hpLabel, mpLabel;
+        Sprite hpBar1, mpBar1, hpBar2, mpBar2;
+        Text hpLabel1, mpLabel1, hpLabel2, mpLabel2;
 
         public CardSelect(Character character)
         {
@@ -93,17 +93,29 @@ namespace RPS_Fighter.Displays
             background = new Sprite(new Texture("Images/GameMat2.png"));
 
             #region hpLabel mpLabel
-            hpBar = new Sprite(new Texture("Images/HPBar.png"));
-            mpBar = new Sprite(new Texture("Images/MPBar.png"));
-            hpBar.Scale = new Vector2f(1f, 0.1f);
-            mpBar.Scale = new Vector2f(1f, 0.1f);
-            hpBar.Position = new Vector2f(430, 20);
-            mpBar.Position = new Vector2f(430, 40);
+            hpBar1 = new Sprite(new Texture("Images/HPBar.png"));
+            mpBar1 = new Sprite(new Texture("Images/MPBar.png"));
+            hpBar1.Scale = new Vector2f(1f, 0.1f);
+            mpBar1.Scale = new Vector2f(1f, 0.1f);
+            hpBar1.Position = new Vector2f(430, 20);
+            mpBar1.Position = new Vector2f(430, 40);
 
-            hpLabel = new Text(GameMaster.ActiveGM.Player1HP.ToString(), Program.ActiveGame.font, 14);
-            mpLabel = new Text(GameMaster.ActiveGM.Player1MP.ToString(), Program.ActiveGame.font, 14);
-            hpLabel.Position = hpBar.Position;
-            mpLabel.Position = mpBar.Position;
+            hpLabel1 = new Text(GameMaster.ActiveGM.Player1HP.ToString(), Program.ActiveGame.font, 14);
+            mpLabel1 = new Text(GameMaster.ActiveGM.Player1MP.ToString(), Program.ActiveGame.font, 14);
+            hpLabel1.Position = hpBar1.Position;
+            mpLabel1.Position = mpBar1.Position;
+
+            hpBar2 = new Sprite(new Texture("Images/HPBar.png"));
+            mpBar2 = new Sprite(new Texture("Images/MPBar.png"));
+            hpBar2.Scale = new Vector2f(1f, 0.1f);
+            mpBar2.Scale = new Vector2f(1f, 0.1f);
+            hpBar2.Position = new Vector2f(430, 540);
+            mpBar2.Position = new Vector2f(430, 560);
+
+            hpLabel2 = new Text(GameMaster.ActiveGM.Player2HP.ToString(), Program.ActiveGame.font, 14);
+            mpLabel2 = new Text(GameMaster.ActiveGM.Player2MP.ToString(), Program.ActiveGame.font, 14);
+            hpLabel2.Position = hpBar2.Position;
+            mpLabel2.Position = mpBar2.Position;
             #endregion
         }
 
@@ -113,12 +125,21 @@ namespace RPS_Fighter.Displays
             {
                 disp.Update();
             }
-            hpBar.Scale = new Vector2f(GameMaster.ActiveGM.Player1HP / 30f, 0.1f);
-            mpBar.Scale = new Vector2f(GameMaster.ActiveGM.Player1MP / 15f, 0.1f);
-            hpLabel = new Text(GameMaster.ActiveGM.Player1HP.ToString(), Program.ActiveGame.font, 14);
-            mpLabel = new Text(GameMaster.ActiveGM.Player1MP.ToString(), Program.ActiveGame.font, 14);
-            hpLabel.Position = hpBar.Position;
-            mpLabel.Position = mpBar.Position;
+            #region hp/mp
+            hpBar1.Scale = new Vector2f(GameMaster.ActiveGM.Player1HP / 30f, 0.1f);
+            mpBar1.Scale = new Vector2f(GameMaster.ActiveGM.Player1MP / 15f, 0.1f);
+            hpLabel1 = new Text(GameMaster.ActiveGM.Player1HP.ToString(), Program.ActiveGame.font, 14);
+            mpLabel1 = new Text(GameMaster.ActiveGM.Player1MP.ToString(), Program.ActiveGame.font, 14);
+            hpLabel1.Position = hpBar1.Position;
+            mpLabel1.Position = mpBar1.Position;
+
+            hpBar2.Scale = new Vector2f(GameMaster.ActiveGM.Player2HP / 30f, 0.1f);
+            mpBar2.Scale = new Vector2f(GameMaster.ActiveGM.Player2MP / 15f, 0.1f);
+            hpLabel2 = new Text(GameMaster.ActiveGM.Player2HP.ToString(), Program.ActiveGame.font, 14);
+            mpLabel2 = new Text(GameMaster.ActiveGM.Player2MP.ToString(), Program.ActiveGame.font, 14);
+            hpLabel2.Position = hpBar2.Position;
+            mpLabel2.Position = mpBar2.Position;
+            #endregion
         }
 
         public void Draw(RenderWindow window)
@@ -137,11 +158,15 @@ namespace RPS_Fighter.Displays
             window.Draw(discardLabel);
             window.Draw(gameStateStatus);
 
-            window.Draw(hpBar);
-            window.Draw(mpBar);
-            window.Draw(hpLabel);
-            window.Draw(mpLabel);
-            
+            window.Draw(hpBar1);
+            window.Draw(mpBar1);
+            window.Draw(hpLabel1);
+            window.Draw(mpLabel1);
+
+            window.Draw(hpBar2);
+            window.Draw(mpBar2);
+            window.Draw(hpLabel2);
+            window.Draw(mpLabel2);
         }
     }
 }
