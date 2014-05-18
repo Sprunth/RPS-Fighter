@@ -128,7 +128,7 @@ namespace RPS_Fighter
                             }
                         }
                     }
-                    if (BattleResult == 1 && P2Card.TypeOfCard == CardType.Grapple)
+                    else if (BattleResult == 1 && P2Card.TypeOfCard == CardType.Grapple)
                     {
                         foreach (var item in cs.cards)
                         {
@@ -145,7 +145,7 @@ namespace RPS_Fighter
                             }
                         }
                     }
-                    if (ComboFlag)
+                    else if (ComboFlag)
                     {
                         CurrentGameState = GameState.Reset;
                         ComboFlag = false;
