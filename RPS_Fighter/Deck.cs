@@ -10,6 +10,7 @@ namespace RPS_Fighter
     {
         List<Card> cards;
         public int Count { get { return cards.Count; } }
+        public int LeastEnergy;
         public Deck()
         {
             cards = new List<Card>();
@@ -81,11 +82,16 @@ namespace RPS_Fighter
             return c;
         }
 
-        //public Card Draw(Card c)
-        //{
-        //    cards.Remove(c);
-        //    return c;
-        //}
+        public void SetLeastEnergyCard()
+        {
+            Card minCard = cards[0];
+            foreach (var item in cards)
+            {
+                if (minCard.EnergyCost > item.EnergyCost)
+                    minCard = item;
+            }
+            LeastEnergy = minCard.EnergyCost;
+        }
 
         public void RemoveCard(Card c)
         {
