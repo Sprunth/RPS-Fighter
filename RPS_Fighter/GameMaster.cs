@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using RPS_Fighter.Displays;
 using SFML.Graphics;
 using SFML.Window;
-using System.Diagnostics;
 
 namespace RPS_Fighter
 {
