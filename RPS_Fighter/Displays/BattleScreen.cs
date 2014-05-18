@@ -41,6 +41,5 @@ namespace RPS_Fighter.Displays
             window.Draw(versus);
         }
 
-        
     }
 }
