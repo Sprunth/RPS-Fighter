@@ -15,6 +15,7 @@ namespace RPS_Fighter
 
         Card p1Card, p2Card;
 
+        public GameState CurrentGameState { get; private set; }
 
         public GameMaster()
         {
@@ -28,6 +29,8 @@ namespace RPS_Fighter
 
             Player1.PrintDeck();
             Player2.PrintDeck();
+
+            CurrentGameState = GameState.Player1Turn;
         }
 
         public void SetPlayingCard(Card c, Character character)
@@ -38,9 +41,16 @@ namespace RPS_Fighter
             { p2Card = c; }
         }
 
+        public void UpdateGameState()
+        {
+
+        }
+
         public Character GetOtherCharacter(Character c)
         {
             return (c == Player1) ? Player2 : Player1;
         }
     }
+
+    public enum GameState { Player1Turn, Player2Turn, Battle, Combo, Reset }
 }

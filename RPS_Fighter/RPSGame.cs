@@ -22,6 +22,7 @@ namespace RPS_Fighter
             cs.AntialiasingLevel = 8;
             window = new RenderWindow(new VideoMode(1200,900),"RPS Fighter", Styles.Default, cs);
             window.Closed += window_Closed;
+            window.SetFramerateLimit(60);
         }
 
         public void Initialize()
