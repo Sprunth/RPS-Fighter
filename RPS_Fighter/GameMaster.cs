@@ -18,7 +18,7 @@ namespace RPS_Fighter
         Character Player1 { get; set; }
         Character Player2 { get; set; }
 
-        Card p1Card, p2Card;
+        public Card P1Card, P2Card;
 
         public GameState CurrentGameState { get; private set; }
 
@@ -56,9 +56,9 @@ namespace RPS_Fighter
         public void SetPlayingCard(Card c, Character character)
         {
             if (Player1 == character)
-            { p1Card = c; }
+            { P1Card = c; }
             else
-            { p2Card = c; }
+            { P2Card = c; }
         }
 
         public void UpdateGameState()
@@ -193,66 +193,66 @@ namespace RPS_Fighter
         public int Battle()
         {
             //check card strengths
-            if ((p1Card.TypeOfCard == CardType.Attack) && (p2Card.TypeOfCard == CardType.Block))
+            if ((P1Card.TypeOfCard == CardType.Attack) && (P2Card.TypeOfCard == CardType.Block))
                 return 1; //
-            else if ((p1Card.TypeOfCard == CardType.Block) && (p2Card.TypeOfCard == CardType.Grapple))
+            else if ((P1Card.TypeOfCard == CardType.Block) && (P2Card.TypeOfCard == CardType.Grapple))
             {
-                p2Card.ApplyEffect(Player1);
+                P2Card.ApplyEffect(Player1);
                 return 1;
             }
-            else if ((p1Card.TypeOfCard == CardType.Grapple) && (p2Card.TypeOfCard == CardType.Attack))
+            else if ((P1Card.TypeOfCard == CardType.Grapple) && (P2Card.TypeOfCard == CardType.Attack))
             {
-                p2Card.ApplyEffect(Player1);
+                P2Card.ApplyEffect(Player1);
                 return 1;
             }
-            else if ((p2Card.TypeOfCard == CardType.Attack) && (p1Card.TypeOfCard == CardType.Block))
+            else if ((P2Card.TypeOfCard == CardType.Attack) && (P1Card.TypeOfCard == CardType.Block))
                 return 0;
-            else if((p2Card.TypeOfCard == CardType.Block) && (p1Card.TypeOfCard == CardType.Grapple))
+            else if((P2Card.TypeOfCard == CardType.Block) && (P1Card.TypeOfCard == CardType.Grapple))
             {
-                p1Card.ApplyEffect(Player2);
-                return 0;
-            }
-            else if((p2Card.TypeOfCard == CardType.Grapple) && (p1Card.TypeOfCard == CardType.Attack))
-            {
-                p1Card.ApplyEffect(Player2);
+                P1Card.ApplyEffect(Player2);
                 return 0;
             }
-            else if((p2Card.TypeOfCard == p1Card.TypeOfCard) && (p1Card.TypeOfCard == CardType.Attack))
+            else if((P2Card.TypeOfCard == CardType.Grapple) && (P1Card.TypeOfCard == CardType.Attack))
             {
-                if(p1Card.Strength>p2Card.Strength)
+                P1Card.ApplyEffect(Player2);
+                return 0;
+            }
+            else if((P2Card.TypeOfCard == P1Card.TypeOfCard) && (P1Card.TypeOfCard == CardType.Attack))
+            {
+                if(P1Card.Strength>P2Card.Strength)
                 {
-                    p1Card.ApplyEffect(Player2);
+                    P1Card.ApplyEffect(Player2);
                     return 0;
                 }
-                else if(p2Card.Strength>p1Card.Strength)
+                else if(P2Card.Strength>P1Card.Strength)
                 {
-                    p2Card.ApplyEffect(Player1);
+                    P2Card.ApplyEffect(Player1);
                     return 1;
                 }
                 else
                 {
-                    p1Card.ApplyEffect(Player2);
-                    p2Card.ApplyEffect(Player1);
+                    P1Card.ApplyEffect(Player2);
+                    P2Card.ApplyEffect(Player1);
                     return 2;
 
                 }
             }
-            else if ((p2Card.TypeOfCard == p1Card.TypeOfCard) && (p1Card.TypeOfCard == CardType.Grapple))
+            else if ((P2Card.TypeOfCard == P1Card.TypeOfCard) && (P1Card.TypeOfCard == CardType.Grapple))
             {
-                if (p1Card.Strength > p2Card.Strength)
+                if (P1Card.Strength > P2Card.Strength)
                 {
-                    p1Card.ApplyEffect(Player2);
+                    P1Card.ApplyEffect(Player2);
                     return 0;
                 }
-                else if (p2Card.Strength > p1Card.Strength)
+                else if (P2Card.Strength > P1Card.Strength)
                 {
-                    p2Card.ApplyEffect(Player1);
+                    P2Card.ApplyEffect(Player1);
                     return 1;
                 }
                 else
                 {
-                    p1Card.ApplyEffect(Player2);
-                    p2Card.ApplyEffect(Player1);
+                    P1Card.ApplyEffect(Player2);
+                    P2Card.ApplyEffect(Player1);
                     return 2;
 
                 }
