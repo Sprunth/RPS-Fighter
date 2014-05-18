@@ -86,6 +86,14 @@ namespace RPS_Fighter.Displays
             gameStateStatus.Position = new Vector2f(60, 20);
         }
 
+        public void Update()
+        {
+            foreach(CardDisplay disp in cards)
+            {
+                disp.Update();
+            }
+        }
+
         public void Draw(RenderWindow window)
         {
             foreach(CardDisplay cd in cards)

@@ -71,10 +71,12 @@ namespace RPS_Fighter
             {
                 case GameState.Player1Turn:
                     Player1Turn(Program.ActiveGame.RPSWindow);
+                    cs.Update();
                     break;
                 case GameState.Player2Turn:
                     cs = new CardSelect(Player2);
                     Player2Turn(Program.ActiveGame.RPSWindow);
+                    cs.Update();
                     break;
                 case GameState.Battle:
                     bs.Update();

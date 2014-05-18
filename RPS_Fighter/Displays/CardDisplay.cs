@@ -68,6 +68,16 @@ namespace RPS_Fighter.Displays
             centerImg = new Sprite(new Texture(cardCenterImagePath));
         }
 
+        public void Update()
+        {
+            var mousePos = Mouse.GetPosition(Program.ActiveGame.RPSWindow);
+            if (spr.GetGlobalBounds().Contains(mousePos.X, mousePos.Y))
+            {
+                spr.Color = new Color(255, 255, 255);
+            }
+            else { spr.Color = new Color(200, 200, 200); }
+        }
+
         public void SetPosition(Vector2f pos)
         {
             spr.Position            = pos;
@@ -86,6 +96,7 @@ namespace RPS_Fighter.Displays
             target.Draw(strength);
             target.Draw(energyCost);
             target.Draw(cardTypeText);
+            
         }
 
         public bool IsWithin(Vector2f vector)

@@ -63,6 +63,8 @@ namespace RPS_Fighter.Displays
                 if (p1Card.Position.X > p1Goal && p2Card.Position.X < p2Goal)
                 { AnimationDone = true; }
             }
+            p1Card.Update();
+            p2Card.Update();
         }
 
         public void Draw(RenderWindow window)
