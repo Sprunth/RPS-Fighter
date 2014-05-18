@@ -9,7 +9,7 @@ using SFML.Audio;
 using SFML.Graphics;
 using SFML.Window;
 
-namespace RPS_Fighter
+namespace RPS_Fighter.Displays
 {
     class CardDisplay : Drawable
     {
