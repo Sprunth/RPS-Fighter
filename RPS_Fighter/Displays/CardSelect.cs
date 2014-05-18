@@ -26,6 +26,7 @@ namespace RPS_Fighter.Displays
 
         Sprite hpBar1, mpBar1, hpBar2, mpBar2;
         Text hpLabel1, mpLabel1, hpLabel2, mpLabel2;
+        Text p1Label, p2Label;
 
         public CardSelect(Character character)
         {
@@ -116,6 +117,11 @@ namespace RPS_Fighter.Displays
             mpLabel2 = new Text(GameMaster.ActiveGM.Player2MP.ToString(), Program.ActiveGame.font, 14);
             hpLabel2.Position = hpBar2.Position;
             mpLabel2.Position = mpBar2.Position;
+
+            p1Label = new Text("Player 1", Program.ActiveGame.font, 14);
+            p2Label = new Text("Player 2", Program.ActiveGame.font, 14);
+            p1Label.Position = hpBar1.Position + new Vector2f(0, -14);
+            p2Label.Position = hpBar2.Position + new Vector2f(0, -14);
             #endregion
         }
 
@@ -158,6 +164,8 @@ namespace RPS_Fighter.Displays
             window.Draw(discardLabel);
             window.Draw(gameStateStatus);
 
+            #region hp/mp
+
             window.Draw(hpBar1);
             window.Draw(mpBar1);
             window.Draw(hpLabel1);
@@ -167,6 +175,10 @@ namespace RPS_Fighter.Displays
             window.Draw(mpBar2);
             window.Draw(hpLabel2);
             window.Draw(mpLabel2);
+
+            window.Draw(p1Label);
+            window.Draw(p2Label);
+            #endregion
         }
     }
 }
