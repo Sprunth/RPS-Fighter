@@ -15,6 +15,7 @@ namespace RPS_Fighter.Displays
         public WinScreen()
         {
             background = new Sprite(new Texture("Images/WinScreen.png"));
+            winnerText = new Text();
         }
         public void DisplayWinner(int result)
         {
