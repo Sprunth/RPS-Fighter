@@ -33,6 +33,14 @@ namespace RPS_Fighter.Displays
         public void UpdateInfo(Card c)
         {
             card = c;
+            /*
+            if (strength != null)
+                strength.Dispose();
+            if (energyCost != null)
+                energyCost.Dispose();
+            if (cardTypeText != null)
+                cardTypeText.Dispose();
+             * */
             strength = new Text("STR: " + c.Strength.ToString(), font, 16);
             energyCost = new Text("ENG: " + c.EnergyCost.ToString(), font, 16);
             cardTypeText = new Text(c.TypeOfCard.ToString(), font, 16);
@@ -64,6 +72,12 @@ namespace RPS_Fighter.Displays
                     }
                 default: throw new Exception("Unknown cardtype: " + c.TypeOfCard);
             }
+            /*
+            if (spr != null)
+                spr.Dispose();
+            if (centerImg != null)
+                centerImg.Dispose();
+             * */
             spr = new Sprite(new Texture(cardImagePath));
             centerImg = new Sprite(new Texture(cardCenterImagePath));
         }

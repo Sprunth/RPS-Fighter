@@ -229,6 +229,7 @@ namespace RPS_Fighter
                             mouseClicked = false;
                             CurrentGameState = GameState.Player1Turn;
                             cs = new CardSelect(Player1);
+                            Program.ActiveGame.RPSWindow.Close();
                         }
                         break;
                     }
